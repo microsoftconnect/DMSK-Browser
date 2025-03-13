@@ -1,2 +1,1 @@
-# DMSK-Browser
-Temporary location for Browser SpeechKit package and samples
+TODO: Create a file called LICENSE (not LICENSE.TXT, LICENSE.md, etc.)…
