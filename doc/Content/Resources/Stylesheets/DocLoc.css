@@ -1,0 +1,576 @@
+﻿@import "../LocalizedStylesheets/Localized.css";
+
+*
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body
+{
+	background-color: #ffffff;
+	color: #333333;
+	font-family: Calibri, sans-serif;
+	font-size: 16px;
+	line-height: 1.3;
+	margin: 1.5em;
+	mc-hyphenate: never;
+}
+
+p,
+ol,
+ul,
+h3,
+h4,
+h5,
+h6,
+table,
+img.pageWidth
+{
+	margin-bottom: 16px;
+}
+
+
+li,
+li p,
+ul p,
+ol p,
+.example p,
+p.TOC1,
+p.TOC2,
+p.TOC3,
+p.TOC4,
+p.TOC5,
+p.TOC6
+{
+	margin-bottom: 8px;
+}
+
+p.compact,
+p.compact2,
+p.compact3,
+p.compact4,
+p.compact5,
+p.compact6
+{
+	margin-bottom: 0;
+}
+
+h1, h2
+{
+	margin-bottom: 24px;
+}
+
+h1.FrontPage
+{
+	margin-bottom: 24px;
+	font-size: 48pt;
+	page-break-before: never;
+	mc-heading-level: 0;
+}
+
+h2.FrontPage
+{
+	margin-bottom: 0;
+	margin-top: 0;
+	font-size: 20pt;
+	letter-spacing: -0.5px;
+	font-weight: lighter;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+	color: #333333;
+}
+
+h2
+{
+	margin-top: 24px;
+}
+
+h2, h3
+{
+	margin-top: 36px;
+}
+
+h1+h2,
+h1+h3,
+h1+h4,
+h1+h5,
+h1+h6,
+h2+h3,
+h2+h4,
+h2+h5,
+h2+h6
+{
+	margin-top: 0;
+}
+
+a,
+a:link,
+a:visited,
+a code,
+a span.path
+{
+	text-decoration: none;
+	color: #1c68d4;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+h1
+{
+	font-size: 36px;
+	font-weight: lighter;
+	letter-spacing: -0.5px;
+	page-break-before: always;
+	column-break-after: avoid;
+	mc-heading-level: 1;
+	color: #141380;
+}
+
+h2
+{
+	font-size: 30px;
+	letter-spacing: -0.5px;
+	font-weight: lighter;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 2;
+	color: #141380;
+}
+
+h3,
+p.TOC
+{
+	font-size: 22px;
+	font-weight: normal;
+	letter-spacing: -0.5px;
+	page-break-before: always;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h4
+{
+	font-size: 18px;
+	font-weight: bold;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+	margin-bottom: 5px;
+}
+
+h4.newPage
+{
+	page-break-before: always;
+	margin-top: 0.0em;
+	margin-bottom: 5px;
+}
+
+h5
+{
+	font-size: 16px;
+	font-weight: bold;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h6
+{
+	border-bottom: 1px solid #141380;
+	font-size: 16px;
+	font-weight: normal;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+	color: #141380;
+}
+
+p.ChapterNumber
+{
+	color: #141380;
+	font-family: Calibri, sans-serif;
+	font-size: 36px;
+	line-height: 14pt;
+	mc-auto-number-position: inside-head;
+	mc-auto-number-format: 'CH:Chapter {chapnum}';
+	mc-heading-level: 1;
+}
+
+ul
+{
+	list-style-type: disc;
+}
+
+ol,
+ul
+{
+	list-style-position: outside;
+	margin-left: 40px;
+}
+
+p.indent2, p.compact2
+{
+	margin-left: 40px;
+}
+
+p.indent3, p.compact3
+{
+	margin-left: 80px;
+}
+
+p.indent4, p.compact4
+{
+	margin-left: 120px;
+}
+
+p.indent5, p.compact5
+{
+	margin-left: 160px;
+}
+
+p.indent6, p.compact6
+{
+	margin-left: 200px;
+}
+
+p.indent7, p.compact7
+{
+margin-left: 240px;
+}
+
+p.indent8, p.compact8
+{
+margin-left: 280px;
+}
+
+p.indent9, p.compact9
+{
+margin-left: 320px;
+}
+
+p.indent10, p.compact10
+{
+margin-left: 360px;
+}
+
+.example p.indent2,
+.example p.compact2
+{
+	margin-left: 0;
+	text-indent: 40px;
+}
+
+.example p.indent3,
+.example p.compact3
+{
+	margin-left: 0;
+	text-indent: 80px;
+}
+
+.example p.indent4,
+.example p.compact4
+{
+	margin-left: 0;
+	text-indent: 120px;
+}
+
+.example p.indent5,
+.example p.compact5
+{
+	margin-left: 0;
+	text-indent: 160px;
+}
+
+.example p.indent6,
+.example p.compact6
+{
+	margin-left: 0;
+	text-indent: 200px;
+}
+
+p.backToTop
+{
+	text-align: right;
+	font-weight: normal;
+}
+
+p.topic
+{
+	margin-bottom: 1.5em;
+	font-size: 1.2em;
+}
+
+pre,
+span.path,
+code,
+code *,
+.codeSnippet
+{
+	font-family: Consolas, 'Andale Mono', monospace;
+	color: #444;
+	font-size: 14px;
+	letter-spacing:-0.5px;
+}
+
+pre
+{
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+span.command
+{
+	color: #00753b;
+	font-weight: bold;
+}
+
+span.important
+{
+	font-weight: bold;
+	color: #ff0000;
+}
+
+span.heading
+{
+	font-weight: bold;
+	color: #141380;
+}
+
+span.userInterface
+{
+	font-weight: bold;
+}
+
+span.selectedText
+{
+	background-color: #87cefa;
+}
+
+span.userInput
+{
+	font-style: italic;
+}
+
+span.cursor
+{
+	color: #dc143c;
+	font-weight: bold;
+}
+
+span.TTSprompt
+{
+	font-weight: bold;
+	color: #1a4b96;
+}
+
+span.SearchHighlight
+{
+	background-color: #ffff66;
+}
+
+.example
+{
+	border: 1px solid #c9d1d7;
+	background-color: #f1f5f9;
+	padding: 0.5em 1em;
+}
+
+.warning
+{
+	background-color: #E8F0FD;
+	padding: 0.5em 1em;
+}
+
+.newColumn
+{
+	column-break-before: always;
+}
+
+.newPage
+{
+	page-break-before: always;
+	margin-top: 0;
+}
+
+table
+{
+	border-collapse: collapse;
+	page-break-inside: inherit;
+	font-size: 1em;
+}
+
+td,
+th
+{
+	border: 1px solid #c9d1d7;
+	text-align: left;
+	vertical-align: top;
+	padding: 0.4em;
+	page-break-inside: avoid;
+}
+
+th
+{
+	font-size: 16px;
+	background-color: rgb(20,19,128);
+	color: rgb(255,255,255);
+	font-weight: bold;
+}
+
+tr:nth-child(odd)
+{
+    background-color: rgb(229,235,235);
+}
+
+hr
+{
+	color: #C4CACA;
+	background-color: #C4CACA;
+	height: 1px;
+	margin-bottom: 1.3em;
+	margin-top: 1.3em;
+}
+
+img.pageWidth
+{
+	width: auto;
+	max-width: 100%;
+	height: auto;
+}
+
+img.sidebyside
+{
+width: 40%;
+height: auto;
+}
+
+img.sidebyside:first-child
+{
+margin-right: 10%;
+}
+
+img.iconLarge
+{
+	max-height: 48px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+img.iconMedium
+{
+	max-height: 24px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+img.iconSmall
+{
+	max-height: 16px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+a img
+{
+	margin-left: 0;
+	margin-right: 10px;
+}
+
+div.miniToc p, div.miniToc a
+{
+	margin-bottom: 0.8em !important;
+	font-weight: normal !important;
+}
+
+/*
+Smaller size for the PDF header and footer
+(set here instead of in the page layout file)
+*/
+
+.header, .footer
+{
+	font-size: 12px;
+	font-weight: lighter;
+}
+
+.header p, .footer p
+{
+	margin-top: 6px;
+	margin-bottom: 6px;
+
+}
+
+h3
+{
+	page-break-before: inherit;
+}
+
+/*
+Apply medium: print to PDF and Word targets
+*/
+
+@media print
+{
+	body
+	{
+	margin: 0;
+	}
+	
+	img.pageWidth
+	{
+	max-width: 15cm;
+	}
+
+	h1
+	{	
+	font-size: 40px;
+	margin-bottom: 40px;
+	}
+
+}
+
+/*
+PDF header and footer elements
+*/
+
+.right{
+    float:right;
+	padding-right: 0.75in;
+}
+
+.left{
+    float:left;
+	padding-left: 1in;
+}
+
+table.pdf-top-banner, table.pdf-bottom-banner
+{
+	width:100%;
+}
+
+table.pdf-top-banner td, table.pdf-bottom-banner td
+{
+	height: 0.5cm;
+	border:0;
+	background: url(HeaderBlockColour.png);
+	background-size: cover;
+}
+
+img.NuanceLogo
+{
+	height:1cm;
+	width:auto;
+}

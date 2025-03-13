@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Samples">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>Sample: Reinitialize VUI form sample</title>
+        <style>*
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body
+{
+	background-color: #fff;
+	font-family: 'Microsoft Sans Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 80%;
+	line-height: 1.3;
+	margin: 1.5em;
+	mc-hyphenate: never;
+}
+
+@media handheld
+{
+	body
+	{
+		font-size: 100%;
+		line-height: 1.5;
+	}
+}
+
+@media print
+{
+	body
+	{
+		margin: 0;
+	}
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+table,
+img.pageWidth
+{
+	margin-bottom: 0.8em;
+}
+
+a,
+a:link,
+a code,
+a span.path
+{
+	text-decoration: none;
+	color: #3366d0;
+}
+
+a:visited
+{
+	color: #3366d0;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+h1
+{
+	font-size: 2em;
+	color: #1A7CB6;
+	font-weight: normal;
+	page-break-before: always;
+	column-break-after: avoid;
+	mc-heading-level: 1;
+}
+
+h2
+{
+	margin-top: 1em;
+	border-bottom: 1px solid #1A7CB6;
+	font-size: 1.5em;
+	color: #1A7CB6;
+	font-weight: normal;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 2;
+}
+
+h3,
+p.TOC
+{
+	margin-top: 1em;
+	font-size: 1.2em;
+	font-weight: normal;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h4
+{
+	margin-top: 1em;
+	font-size: 1em;
+	font-weight: bold;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h5
+{
+	margin-top: 1em;
+	font-size: 1em;
+	font-weight: bold;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h6
+{
+	margin-top: 0.5em;
+	font-size: 1em;
+	font-weight: bold;
+	border-bottom: 1px solid #289728;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+ul
+{
+	list-style-type: square;
+}
+
+ol,
+ul
+{
+	list-style-position: outside;
+	margin-left: 2.3em;
+}
+
+p.indent2
+{
+	margin-left: 2.3em;
+}
+
+p.indent3
+{
+	margin-left: 4.6em;
+}
+
+p.indent4
+{
+	margin-left: 6.9em;
+}
+
+p.compact,
+li.compact
+{
+	margin-bottom: 0.2em;
+}
+
+p.compact2
+{
+	margin-bottom: 0.2em;
+	margin-left: 2.3em;
+}
+
+p.compact3
+{
+	margin-bottom: 0.2em;
+	margin-left: 4.6em;
+}
+
+p.compact4
+{
+	margin-bottom: 0.2em;
+	margin-left: 6.9em;
+}
+
+.example p
+{
+	margin-bottom: 0.2em;
+}
+
+.example p.indent2,
+.example p.compact2
+{
+	margin-left: 0;
+	text-indent: 2.3em;
+}
+
+.example p.indent3,
+.example p.compact3
+{
+	margin-left: 0;
+	text-indent: 4.6em;
+}
+
+.example p.indent4,
+.example p.compact4
+{
+	margin-left: 0;
+	text-indent: 6.9em;
+}
+
+p.backToTop
+{
+	text-align: right;
+	font-weight: normal;
+}
+
+pre,
+code,
+code *
+{
+	font-family: Consolas, 'Andale Mono', monospace;
+	color: #444;
+}
+
+pre
+{
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+span.command
+{
+	font-weight: bold;
+	color: #289728;
+}
+
+span.important
+{
+	font-weight: bold;
+	color: #ff0000;
+}
+
+span.heading
+{
+	font-weight: bold;
+	color: #1A7CB6;
+}
+
+span.userInterface
+{
+	font-weight: bold;
+}
+
+span.path
+{
+	font-family: Verdana, sans-serif;
+	font-size: 0.9em;
+	color: #444;
+}
+
+span.selectedText
+{
+	background-color: #87cefa;
+}
+
+span.userInput
+{
+	font-style: italic;
+}
+
+span.cursor
+{
+	color: #dc143c;
+	font-weight: bold;
+}
+
+.note
+{
+	border: 1px solid #289728;
+	padding: 0.5em 1em;
+}
+
+.example
+{
+	border: 1px solid #c9d1d7;
+	background-color: #f1f5f9;
+	padding: 0.5em 1em;
+}
+
+.warning
+{
+	border: 1px solid #289728;
+	background-color: #f0f3f7;
+	padding: 0.5em 1em;
+}
+
+.wide
+{
+	margin-bottom: 1.5em;
+}
+
+.columnBreak
+{
+	column-break-before: always;
+}
+
+table
+{
+	border-collapse: collapse;
+	page-break-inside: avoid;
+	font-size: 1em;
+}
+
+td,
+th
+{
+	border: 1px solid #c9d1d7;
+	text-align: left;
+	vertical-align: top;
+	padding: 0.4em;
+	page-break-inside: avoid;
+}
+
+th
+{
+	background-color: #f0f3f7;
+	color: #1A7CB6;
+	font-weight: bold;
+}
+
+hr
+{
+	color: #289728;
+	background-color: #289728;
+	height: 1px;
+	margin-bottom: 1.3em;
+	margin-top: 1.3em;
+}
+
+img.pageWidth
+{
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: auto;
+}
+
+@media print
+{
+	img.pageWidth
+	{
+		max-width: 15cm;
+	}
+}
+
+img.iconLarge
+{
+	max-height: 48px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+img.iconMedium
+{
+	max-height: 24px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+img.iconSmall
+{
+	max-height: 16px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+span.SearchHighlight
+{
+	background-color: #FFFF66;
+}
+
+</style>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1>Reinitialize VUI form sample</h1>
+        <p>This sample code is written in HTML, JavaScript and CSS; it demonstrates the basic functions on how to reinitialize the VUI form after you've dynamically changed the set of controls on your web page.</p>
+        <h2>Preconditions</h2>
+        <p>In order for the sample and app to work, they must be hosted on a web server; for example, Internet Information System (IIS).</p>
+        <h2>Deployment</h2>
+        <p>Proceed as follows:</p>
+        <ol>
+            <li value="1">Deploy the <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> package on your web server. </li>
+            <li value="2">Configure the web server to serve the cookie containing licensing information (organization token and partner GUIDs). For more information, see: <a href="../BrowserUseCases/DANUBE_SPEECH_ENABLE_BROWSER.htm">Speech-enabling your browser app</a>.</li>
+            <li value="3">
+                <p>Enable cookies in the web browser; this is necessary for the information from the organization token and partner GUIDs to be accessed.</p>
+            </li>
+            <li value="4">Enable JavaScript in the web browser.</li>
+            <li value="5">For on-premises deployment, make sure that the URL for the <span class="path">Nuance.SpeechAnywhere.js</span> file points to your web server. Open the sample in an editor and change the URL <span class="path">https://speechanywhere.nuancehdp.com/3.2/scripts/Nuance.SpeechAnywhere.js</span> to point to the file location on your web server.</li>
+            <p class="warning"><span class="important">Important:</span> Don't modify this URL when using <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> hosted in the Nuance data center.</p>
+        </ol>
+        <ol start="6">
+            <li value="6">Point the web browser to this location: <span class="path">http://&lt;your web server&gt;/samples/Sample_ReinitializeVUIForm.html</span></li>
+        </ol>
+        <h2>System requirements</h2>
+        <p>For more information on supported software versions, see the corresponding release notes.</p>
+        <h2>Use cases </h2>
+        <p>This sample covers the following use cases:</p>
+        <ul>
+            <li>
+                <p>All use cases supported by <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> out of the box. For more information, see: <a href="DANUBE_SAMPLE_OVERVIEW_BROWSER.htm">Overview</a>.</p>
+            </li>
+            <li>To dynamically add fields in the sample, select the <b>Add field</b> button.</li>
+        </ul>
+        <h2>Sample characteristics</h2>
+        <p>The sample is composed of &lt;<code>input&gt;</code> and <code>&lt;textarea&gt;</code> elements that are speech-enabled automatically by <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>. The <code>data-nusa-concept-name</code> attribute has been added to each element to enable field navigation using <span class="command">go to</span> voice commands.</p>
+        <p>The sample shows how to call the <code>NUSA_reinitializeVuiForm()</code> function when new fields are added, to ensure that they're speech-enabled automatically by <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>.</p>
+        <p>Field navigation using <span class="command">next/previous field</span> is possible, but named field navigation is not.</p>
+    </body>
+</html>

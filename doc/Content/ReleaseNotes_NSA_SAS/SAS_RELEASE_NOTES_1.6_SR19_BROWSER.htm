@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Release History" data-mc-conditions="Danube.Browser">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>360 | SpeechAnywhere Services 1.6 Service Release 19 (Browser edition)</title>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1>Release Notes for 360&#160;|&#160;SpeechAnywhere Services 1.6 Service Release 19 (Browser edition)</h1>
+        <h2>Solved issues in service release 19</h2>
+        <p>In Microsoft Internet Explorer 9, the cursor no longer jumps to the end of the field when recording is started. [DNB-2655, DNB-2598]</p>
+        <p>In Microsoft Internet Explorer 11, the cursor is no longer in an incorrect position after typing &lt;Enter&gt; between two dictations. [DNB-1867]</p>
+        <p>Manually changing the focus to another speech-enabled field no longer results in recognition inaccuracies in the next utterance. [DNB-2575]</p>
+        <p>Network connection reliability has been improved. [DNB-1476]</p>
+        <p>The user can now select text via voice in a text control that has the voice focus, but not the GUI focus. [DNB-1859]</p>
+        <p>The <span class="command">undo that</span> voice command now works properly in single line fields. [DNB-1449]</p>
+        <p class="note"><b>Note:</b> For information on previous  service releases, see <a href="#SR_History">below</a>.</p>
+        <h2>Important information in version 1.6</h2>
+        <ul style="list-style-type: square;">
+            <li>In order to take advantage of these improvements, 360 | SpeechAnywhere Services 1.6 SR 10 Server is highly recommended with this version of the Browser edition.</li>
+            <li>360 | SpeechAnywhere Services 1.6 Server is compatible with client versions 1.4, 1.5 and 1.6.</li>
+            <li>360 | SpeechAnywhere Services 1.6 Browser edition is compatible with server versions 1.4, 1.5 and 1.6.</li>
+            <li>Do not change or hide GUI elements. Changing or hiding GUI elements risks the stability and compatibility of the SDK and Nuance cannot provide support for such integrations.</li>
+        </ul>
+        <h2>New in version 1.6</h2>
+        <ul>
+            <li>Voice editing functionality has been extended with select &amp; say voice commands (Dragon-based systems only).</li>
+            <li>Text formatting has been improved. When text is inserted, the spacing is correctly updated and surrounding text is correctly capitalized (Dragon-based systems only).</li>
+            <li>SAS clients can now use Dragon customization packs (.dat files) containing Text-and-Graphics/auto-texts without lists. You can import and share .dat files via the Nuance Management Console.</li>
+            <li>SAS Browser edition has a new method to start recording: <code>NUSA_startRecording()</code>.</li>
+        </ul>
+        <h2>Known issues</h2>
+        <ul style="list-style-type: square;">
+            <li>In Internet Explorer 11 the cursor position is incorrect after copied text has been pasted in. [DNB-1434]</li>
+        </ul>
+        <ul style="list-style-type: square;">
+            <li>On OS X, speech recognition can be temporarily unavailable after switching between browsers. <b>Solution:</b> Refresh the page. [PSP00070425]</li>
+            <li>Internet Explorer: SAS Browser edition does not work correctly with Compatibility View turned on. <b>Solution:</b> Turn off Compatibility View. [DNB-1457, DNB-1458]</li>
+            <li>The <code>SpokenText</code> parameter in the <code>CommandRecognized</code> event is empty in command mode. [DNB-328]</li>
+        </ul>
+        <ul>
+            <li>The Record button does not work on MacBook via Safari browser. Workaround: For the Silverlight plugin, activate <b>Run in Unsafe Mode</b> in the <b>Manage Website Settings</b> (via the <b>Preferences</b> menu, <b>Security</b>, tab of the Safari browser). [DNB-1423]</li>
+        </ul>
+        <h2>Infrastructure</h2>
+        <h3>Infrastructure no longer supported</h3>
+        <ul style="list-style-type: square;">
+            <li>Version 1.2 client applications will stop working with version 1.6 servers.</li>
+            <li>Mozilla Firefox 17.x and lower are no longer supported.</li>
+            <li>Google Chrome 24.x and lower are no longer supported.</li>
+        </ul>
+        <h3>Infrastructure changes planned for the next release</h3>
+        <ul style="list-style-type: square;">
+            <li>In 360 | SpeechAnywhere Services 1.7 all version 1.3 client-based applications will stop working.</li>
+            <li>Mozilla Firefox 24.x and lower will no longer be supported.</li>
+            <li>Google Chrome 29.x and lower will no longer be supported.</li>
+        </ul>
+        <h2>System requirements*</h2>
+        <table id="systemRequirements">
+            <col class="col2" style="width: 311px;" />
+            <col class="col2" />
+            <col class="col2" />
+            <tr>
+                <th>&#160;</th>
+                <th>Recommended</th>
+                <th>Supported</th>
+            </tr>
+            <tr>
+                <th>Google Chrome**</th>
+                <td>35</td>
+                <td>25 - 43</td>
+            </tr>
+            <tr>
+                <th>Mozilla Firefox***</th>
+                <td>30</td>
+                <td>18 - 38</td>
+            </tr>
+            <tr>
+                <th>Microsoft Internet Explorer on Windows****</th>
+                <td>-</td>
+                <td>8 - 11</td>
+            </tr>
+            <tr>
+                <th>Microsoft Silverlight</th>
+                <td>5.1</td>
+                <td>5 - 5.1</td>
+            </tr>
+            <tr>
+                <th>Apple Safari on MacOS X*****</th>
+                <td>-</td>
+                <td>8</td>
+            </tr>
+        </table>
+        <p>** Chrome for MacOS X no longer supports Silverlight; 360 | SpeechAnywhere Services (Browser edition) does not work with Chrome 39 and higher on MacOS X.</p>
+        <p>*** Firefox for MacOS X is only supported with an external microphone.</p>
+        <p>**** Internet Explorer is only supported with the Compatibility View and Protected Mode disabled. Additionally, some <code>&lt;!doctype&gt;</code> definitions are not supported; use <code>&lt;!doctype html&gt;</code>.</p>
+        <p>***** For more information, see the 'Known issues' section above.</p>
+        <h3>*End-of-life: third party environments</h3>
+        <p>Support for third party environments is only valid as long as they are supported by the corresponding vendor and might be subject to other restrictions. Please contact Nuance Technical Support for details. For more information, see the documentation delivered with the third party product and supporting Nuance documentation.</p>
+        <p>When support by the vendor has stopped, Nuance will continue support if an issue is specific to the Nuance solution, within the limitations of the vendor’s end-of-life and Nuance's policy. This means that issues that are a combination of the vendor’s component and the Nuance solution cannot be supported.</p>
+        <h2><a name="SR_History"></a>Service release history</h2>
+        <h3>Solved issues in service release 6</h3>
+        <ul style="list-style-type: square;">
+            <li>Cursor position issues when selected text is overwritten with recognition results have been fixed. [PSP00076214, PSP00076755, PSP00076918, PSP00077222]</li>
+            <li>The handling of line breaks and word wrapping in multiline fields has been made more consistent. [PSP00076438, PSP00076456, PSP00076699, PSP00076869, PSP00076916, PSP00077146, PSP00077243, PSP00077352, PSP00077275]</li>
+            <li>Text formatting and line break handling have been improved in fields that contain a combination of typed/pasted and recognized text and when recognition results are inserted into existing text. [PSP00076759, PSP00076761, PSP00076768, PSP00076774, PSP00077212, PSP00077275, PSP00077285, PSP00077306, PSP00077501]</li>
+            <li>The handling of field focus changes while recognition results are pending in Google Chrome has been improved. [PSP00075963]</li>
+            <li>When the current word is selected via the corresponding voice command (for example, <span class="command">select this word</span>) while recognition results are pending, the recognized text will now be inserted with the last word selected. [PSP00075987]</li>
+            <li>Voice commands that select or format all of the text in a field now work correctly in Firefox. [PSP00076767]</li>
+            <li>Connections between the Browser edition and the SAS Server are now more robust; connections in a network environment that is not ideal now perform better. SAS Sever version 1.6 SR 10 is required. [PSP00077652 PSP00078628 PSP00078631 PSP00078683 PSP00078558]</li>
+        </ul>
+    </body>
+</html>

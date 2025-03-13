@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Release History" data-mc-conditions="Danube.Browser">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>Dragon Medical SpeechKit 3.1 Service Release 2 (Browser edition)</title>
+        <style>*
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body
+{
+	background-color: #fff;
+	font-family: 'Microsoft Sans Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 80%;
+	line-height: 1.3;
+	margin: 1.5em;
+	mc-hyphenate: never;
+}
+
+@media handheld
+{
+	body
+	{
+		font-size: 100%;
+		line-height: 1.5;
+	}
+}
+
+@media print
+{
+	body
+	{
+		margin: 0;
+	}
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+table,
+img.pageWidth
+{
+	margin-bottom: 0.8em;
+}
+
+a,
+a:link,
+a code,
+a span.path
+{
+	text-decoration: none;
+	color: #3366d0;
+}
+
+a:visited
+{
+	color: #3366d0;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+h1
+{
+	font-size: 2em;
+	color: #1A7CB6;
+	font-weight: normal;
+	page-break-before: always;
+	column-break-after: avoid;
+	mc-heading-level: 1;
+}
+
+h2
+{
+	margin-top: 1em;
+	border-bottom: 1px solid #1A7CB6;
+	font-size: 1.5em;
+	color: #1A7CB6;
+	font-weight: normal;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 2;
+}
+
+h3,
+p.TOC
+{
+	margin-top: 1em;
+	font-size: 1.2em;
+	font-weight: normal;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h4
+{
+	margin-top: 1em;
+	font-size: 1em;
+	font-weight: bold;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h5
+{
+	margin-top: 1em;
+	font-size: 1em;
+	font-weight: bold;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h6
+{
+	margin-top: 0.5em;
+	font-size: 1em;
+	font-weight: bold;
+	border-bottom: 1px solid #289728;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+ul
+{
+	list-style-type: square;
+}
+
+ol,
+ul
+{
+	list-style-position: outside;
+	margin-left: 2.3em;
+}
+
+p.indent2
+{
+	margin-left: 2.3em;
+}
+
+p.indent3
+{
+	margin-left: 4.6em;
+}
+
+p.indent4
+{
+	margin-left: 6.9em;
+}
+
+p.compact,
+li.compact
+{
+	margin-bottom: 0.2em;
+}
+
+p.compact2
+{
+	margin-bottom: 0.2em;
+	margin-left: 2.3em;
+}
+
+p.compact3
+{
+	margin-bottom: 0.2em;
+	margin-left: 4.6em;
+}
+
+p.compact4
+{
+	margin-bottom: 0.2em;
+	margin-left: 6.9em;
+}
+
+.example p
+{
+	margin-bottom: 0.2em;
+}
+
+.example p.indent2,
+.example p.compact2
+{
+	margin-left: 0;
+	text-indent: 2.3em;
+}
+
+.example p.indent3,
+.example p.compact3
+{
+	margin-left: 0;
+	text-indent: 4.6em;
+}
+
+.example p.indent4,
+.example p.compact4
+{
+	margin-left: 0;
+	text-indent: 6.9em;
+}
+
+p.backToTop
+{
+	text-align: right;
+	font-weight: normal;
+}
+
+pre,
+code,
+code *
+{
+	font-family: Consolas, 'Andale Mono', monospace;
+	color: #444;
+}
+
+pre
+{
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+span.command
+{
+	font-weight: bold;
+	color: #289728;
+}
+
+span.important
+{
+	font-weight: bold;
+	color: #ff0000;
+}
+
+span.heading
+{
+	font-weight: bold;
+	color: #1A7CB6;
+}
+
+span.userInterface
+{
+	font-weight: bold;
+}
+
+span.path
+{
+	font-family: Verdana, sans-serif;
+	font-size: 0.9em;
+	color: #444;
+}
+
+span.selectedText
+{
+	background-color: #87cefa;
+}
+
+span.userInput
+{
+	font-style: italic;
+}
+
+span.cursor
+{
+	color: #dc143c;
+	font-weight: bold;
+}
+
+.note
+{
+	border: 1px solid #289728;
+	padding: 0.5em 1em;
+}
+
+.example
+{
+	border: 1px solid #c9d1d7;
+	background-color: #f1f5f9;
+	padding: 0.5em 1em;
+}
+
+.warning
+{
+	border: 1px solid #289728;
+	background-color: #f0f3f7;
+	padding: 0.5em 1em;
+}
+
+.wide
+{
+	margin-bottom: 1.5em;
+}
+
+.columnBreak
+{
+	column-break-before: always;
+}
+
+table
+{
+	border-collapse: collapse;
+	page-break-inside: avoid;
+	font-size: 1em;
+}
+
+td,
+th
+{
+	border: 1px solid #c9d1d7;
+	text-align: left;
+	vertical-align: top;
+	padding: 0.4em;
+	page-break-inside: avoid;
+}
+
+th
+{
+	background-color: #f0f3f7;
+	color: #1A7CB6;
+	font-weight: bold;
+}
+
+hr
+{
+	color: #289728;
+	background-color: #289728;
+	height: 1px;
+	margin-bottom: 1.3em;
+	margin-top: 1.3em;
+}
+
+img.pageWidth
+{
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: auto;
+}
+
+@media print
+{
+	img.pageWidth
+	{
+		max-width: 15cm;
+	}
+}
+
+img.iconLarge
+{
+	max-height: 48px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+img.iconMedium
+{
+	max-height: 24px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+img.iconSmall
+{
+	max-height: 16px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+</style>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1>Release Notes for Dragon Medical SpeechKit 3.1 Service Release 2 (Browser edition)</h1>
+        <h2>Solved issues in service release 2</h2>
+        <ul>
+            <li>The cursor no longer jumps to the beginning of the field in the middle of dictation. [DNB-8373]</li>
+        </ul>
+        <ul>
+            <li>Google Chrome no longer frequently reports a system overload. [DNB-7598]</li>
+            <li>The focus no longer jumps unexpectedly in rare scenarios. [DNB-8781]</li>
+        </ul>
+        <h2>Important information</h2>
+        <ul>
+            <li>Dragon Medical SpeechKit 3.1 (Browser edition) requires Dragon Medical Server 3.0 or 3.1. Make sure to upgrade the server before you upgrade to this Browser edition.</li>
+            <li>Dragon Medical Server 3.1 is compatible with Browser editions 3.0 and 3.1.</li>
+            <li>Do not change or hide Browser edition GUI elements. Changing or hiding these elements risks the stability and compatibility of the product; Nuance cannot provide support for such integrations.</li>
+            <li>Web browser debugging consoles or debugging proxies (for example, Fiddler) cannot be used with speech recognition. The performance impact incurred by such infrastructure leads to unreliable speech recognition.</li>
+        </ul>
+        <h2>What's new in version 3.1</h2>
+        <h3>Speech recognition</h3>
+        <ul>
+            <li>Speech recognition now uses neural network (deep learning) technology. (Only some languages are supported.)</li>
+        </ul>
+        <h3>Dragon Medical Analytics</h3>
+        <ul>
+            <li>The <b>Server Management</b> page is now displayed as a carousel in kiosk mode.</li>
+            <li>It is now possible to start Dragon Medical Analytics directly from the Nuance Management Center; this only applies to Nuance-hosted systems.</li>
+            <li>Dragon Medical Server configuration changes and PHI data access are now audited and accessible via the Nuance Management Server Auditor.</li>
+            <li>It is now possible to search for session logs based on the document ID provided by the partner.</li>
+        </ul>
+        <h3>User Interface</h3>
+        <ul>
+            <li>The personalization &amp; help window has been redesigned to improve usability and to prepare it for additional features.</li>
+            <li>Auto-texts with lists are now supported as part of Dragon Medical PowerPacks. The auto-text contains variable text linked to a list of content options.</li>
+            <li>The speech recognition on/off icons now differ in both color and shape to support people with color vision deficiency.</li>
+        </ul>
+        <h3>On-premises systems</h3>
+        <ul>
+            <li>Dragon Medical Server can now connect to the Microsoft SQL&#160;Server using SQL Server Authentication.</li>
+            <li>Dragon Medical Server now supports Microsoft Windows Server 2016. Be aware that Nuance Management Server does not support Windows Server 2016.</li>
+            <li>Italian is now available as a user interface language.</li>
+            <li>Italian is now available as a speech recognition language for non-SpeechMagic-based systems.</li>
+        </ul>
+        <h3>Citrix environments</h3>
+        <ul>
+            <li>Nuance Citrix Server &amp; Virtual Desktop Audio Extension is no longer available; the server binaries required are included in the application folder. Nuance Citrix Client Audio Extension does not need to be installed on the server/virtual desktop.</li>
+            <li>The Citrix extension deployment is now supported in a mixed environment (a range of client end points; for example, Linux thin clients and Windows clients).</li>
+        </ul>
+        <h2>Known issues</h2>
+        <ul>
+            <li>In Google Chrome audio is being recorded but is not properly processed. This is a Chrome issue; for more information, see: <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=649377" target="_blank">https://bugs.chromium.org/p/chromium/issues/detail?id=649377</a>. [DNB-7992]</li>
+            <li>This release does not support mobile devices; including browsers (Firefox and Chrome) that do not use Silverlight.</li>
+            <li>iOS mobile devices do not work using any browser due to Apple limitations on third-party browsers (<a href="https://developer.chrome.com/multidevice/ios/overview" target="_blank">https://developer.chrome.com/multidevice/ios/overview</a>) and lack of the corresponding API support, in Safari, by Apple (<a href="http://caniuse.com/#feat=stream&amp;feat_search=getUserMedia" target="_blank">http://caniuse.com/#feat=stream%26feat_search=getUserMedia</a>).</li>
+        </ul>
+        <h2>Infrastructure</h2>
+        <h3>Infrastructure no longer supported</h3>
+        <ul>
+            <li>Dragon Medical SpeechKit (Browser edition) 3.1 applications do not work with any server version prior to 3.0.</li>
+            <li>Mozilla Firefox 44 and lower are no longer supported (see Mozilla Firefox ESR Overview: <a href="https://www.mozilla.org/en-US/firefox/organizations/faq/" target="_blank">https://www.mozilla.org/en-US/firefox/organizations/faq/</a>).</li>
+            <li>Google Chrome 47 and lower are no longer supported.</li>
+            <li>In Dragon Medical Server 3.1 all version 1.5 client-based applications stop working.</li>
+        </ul>
+        <h3>Infrastructure changes planned for the next release</h3>
+        <ul>
+            <li>In Dragon Medical Server 3.2 all version 1.6 and 2.0 client-based applications will stop working.</li>
+            <li>Google Chrome 52 and lower will no longer be supported.</li>
+        </ul>
+        <h2>System requirements*</h2>
+        <table id="systemRequirements">
+            <col class="col2" />
+            <col class="col2" />
+            <col class="col2" />
+            <tr>
+                <th>&#160;</th>
+                <th>Recommended</th>
+                <th>Supported</th>
+            </tr>
+            <tr>
+                <th>Google Chrome</th>
+                <td>55</td>
+                <td>48 - 55</td>
+            </tr>
+            <tr>
+                <th>Mozilla Firefox</th>
+                <td>50</td>
+                <td>45 - 50</td>
+            </tr>
+            <tr>
+                <th>Microsoft Internet Explorer on Windows</th>
+                <td>-</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <th>Microsoft Silverlight</th>
+                <td>5.1</td>
+                <td>5 - 5.1</td>
+            </tr>
+            <tr>
+                <th>Apple Safari on OS X</th>
+                <td>-</td>
+                <td>9 - 10</td>
+            </tr>
+        </table>
+        <h3>Remarks</h3>
+        <ul>
+            <li>Mozilla Firefox: Firefox for OS X is only supported with an external microphone.</li>
+            <li>
+                <p>Microsoft Internet Explorer on Windows: </p>
+                <p class="indent2">Internet Explorer is only supported with the Compatibility View and Protected Mode disabled. Additionally, some <code>&lt;!doctype&gt;</code> definitions are not supported; use <code>&lt;!doctype html&gt;</code>.</p>
+                <p class="indent2">For Windows Server 2012, Internet Explorer 10 is supported because Internet Explorer 11 is not available.</p>
+            </li>
+            <li>Apple Safari on OS X: For more information, see the 'Known issues' section above.</li>
+            <li>Microsoft Silverlight is only required for Microsoft Internet Explorer on Microsoft Windows and Apple Safari on OS X.</li>
+        </ul>
+        <h3>*End-of-life: third party environments</h3>
+        <p>Support for third party environments is only valid as long as they are supported by the corresponding vendor and might be subject to other restrictions. Please contact Nuance Technical Support for details. For more information, see the documentation delivered with the third party product and supporting Nuance documentation.</p>
+        <p>When support by the vendor has stopped, Nuance will continue support if an issue is specific to the Nuance solution, within the limitations of the vendor’s end-of-life and Nuance's policy. This means that issues that are a combination of the vendor’s component and the Nuance solution cannot be supported.</p>
+        <h2>Dragon Medical SpeechKit product life cycle</h2>
+        <p>Nuance provides support throughout the life cycle of one version and point release. Please note that Nuance will not perform problem analysis after the scheduled start of restricted maintenance. Dragon Medical Server versions released over three months after the dates stated here will not work with these client editions.. For up-to-date information on these schedules, go to Nuance iSupport.</p>
+        <table>
+            <col style="width: 316px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <tr>
+                <th>Restricted maintenance (scheduled start)</th>
+                <th>1.5</th>
+                <th>1.6</th>
+                <th>2.0</th>
+                <th>2.1</th>
+                <th>3.0</th>
+                <th>3.1</th>
+            </tr>
+            <tr>
+                <th>Browser edition</th>
+                <td>2015-06-04</td>
+                <td>2015-07-10</td>
+                <td>-</td>
+                <td>2016-08-28</td>
+                <td>2017-08-26</td>
+                <td>2018-02-02</td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Release History" data-mc-conditions="Danube.Browser">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>Dragon Medical SpeechKit 3.3 Release 7 (Browser edition)</title>
+        <style>*
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+body
+{
+	background-color: #fff;
+	font-family: 'Microsoft Sans Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 80%;
+	line-height: 1.3;
+	margin: 1.5em;
+	mc-hyphenate: never;
+}
+
+@media print
+{
+	body
+	{
+		margin: 0;
+	}
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+table,
+img.pageWidth
+{
+	margin-bottom: 0.8em;
+}
+
+a,
+a:link,
+a code,
+a span.path
+{
+	text-decoration: none;
+	color: #3366d0;
+}
+
+a:visited
+{
+	color: #3366d0;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+h1
+{
+	font-size: 2em;
+	font-weight: normal;
+	color: #1A7CB6;
+	page-break-before: always;
+	column-break-after: avoid;
+	mc-heading-level: 1;
+}
+
+h2
+{
+	margin-top: 1em;
+	border-bottom: 1px solid #1A7CB6;
+	font-size: 1.5em;
+	font-weight: normal;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 2;
+}
+
+h3,
+p.TOC
+{
+	margin-top: 1em;
+	font-size: 1.2em;
+	font-weight: normal;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h4
+{
+	margin-top: 1em;
+	font-size: 1em;
+	font-weight: bold;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h5
+{
+	margin-top: 1em;
+	font-size: 1em;
+	font-weight: bold;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+h6
+{
+	margin-top: 0.5em;
+	font-size: 1em;
+	font-weight: bold;
+	border-bottom: 1px solid #289728;
+	color: #1A7CB6;
+	page-break-after: avoid;
+	column-break-after: avoid;
+	mc-heading-level: 0;
+}
+
+ul
+{
+	list-style-type: square;
+}
+
+ol,
+ul
+{
+	list-style-position: outside;
+	margin-left: 2.3em;
+}
+
+p.indent2
+{
+	margin-left: 2.3em;
+}
+
+p.indent3
+{
+	margin-left: 4.6em;
+}
+
+p.indent4
+{
+	margin-left: 6.9em;
+}
+
+p.compact,
+li.compact
+{
+	margin-bottom: 0.2em;
+}
+
+p.compact2
+{
+	margin-bottom: 0.2em;
+	margin-left: 2.3em;
+}
+
+p.compact3
+{
+	margin-bottom: 0.2em;
+	margin-left: 4.6em;
+}
+
+p.compact4
+{
+	margin-bottom: 0.2em;
+	margin-left: 6.9em;
+}
+
+.example p
+{
+	margin-bottom: 0.2em;
+}
+
+.example p.indent2,
+.example p.compact2
+{
+	margin-left: 0;
+	text-indent: 2.3em;
+}
+
+.example p.indent3,
+.example p.compact3
+{
+	margin-left: 0;
+	text-indent: 4.6em;
+}
+
+.example p.indent4,
+.example p.compact4
+{
+	margin-left: 0;
+	text-indent: 6.9em;
+}
+
+p.backToTop
+{
+	text-align: right;
+	font-weight: normal;
+}
+
+pre,
+code,
+code *
+{
+	font-family: Consolas, 'Andale Mono', monospace;
+	color: #444;
+}
+
+pre
+{
+	word-wrap: break-word;
+	white-space: pre-wrap;
+}
+
+span.command
+{
+	font-weight: bold;
+	color: #289728;
+}
+
+span.important
+{
+	font-weight: bold;
+	color: #ff0000;
+}
+
+span.userInterface
+{
+	font-weight: bold;
+}
+
+span.path
+{
+	font-family: Verdana, sans-serif;
+	font-size: 0.9em;
+	color: #444;
+}
+
+span.selectedText
+{
+	background-color: #87cefa;
+}
+
+span.cursor
+{
+	color: #dc143c;
+	font-weight: bold;
+}
+
+.note
+{
+	border: 1px solid #289728;
+	padding: 0.5em 1em;
+}
+
+.example
+{
+	border: 1px solid #c9d1d7;
+	background-color: #f1f5f9;
+	padding: 0.5em 1em;
+}
+
+.warning
+{
+	border: 1px solid #289728;
+	background-color: #f0f3f7;
+	padding: 0.5em 1em;
+}
+
+.wide
+{
+	margin-bottom: 1.5em;
+}
+
+.columnBreak
+{
+	column-break-before: always;
+}
+
+table
+{
+	border-collapse: collapse;
+	page-break-inside: avoid;
+	font-size: 1em;
+}
+
+td,
+th
+{
+	border: 1px solid #c9d1d7;
+	text-align: left;
+	vertical-align: top;
+	padding: 0.4em;
+	page-break-inside: avoid;
+}
+
+th
+{
+	background-color: #f0f3f7;
+	color: #1A7CB6;
+	font-weight: bold;
+}
+
+hr
+{
+	color: #289728;
+	background-color: #289728;
+	height: 1px;
+	margin-bottom: 1.3em;
+	margin-top: 1.3em;
+}
+
+hr.alternative
+{
+	color: #e9e9e9;
+	background-color: #e9e9e9;
+}
+
+img.pageWidth
+{
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: auto;
+}
+
+@media print
+{
+	img.pageWidth
+	{
+		max-width: 15cm;
+	}
+}
+
+img.iconLarge
+{
+	max-height: 48px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+img.iconMedium
+{
+	max-height: 24px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+img.iconSmall
+{
+	max-height: 16px;
+	width: auto;
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	vertical-align: text-bottom;
+}
+
+</style>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1>Release Notes for Dragon Medical SpeechKit 3.3 Release 7 (Browser edition)</h1>
+        <h2>New in version 3.3 release 7</h2>
+        <ul>
+            <li>Dragon Medical SpeechKit 3.3 Release 7 (Browser edition) does not require Microsoft Silverlight for speech recognition in Apple Safari 11.0.2 or higher. No action is required on your side. [DNB-12934]</li>
+            <li>Dragon Medical SpeechKit 3.3 Release 7 (Browser edition) now supports press-and-hold mode to improve speech recognition results in noisy environments (requires Dragon Medical Server 3.3). The press-and-hold mode is available to all users of the PowerMic Web Extension (Chrome on Windows 7 or higher only) via the personalization &amp; help window. [DNB-12159]</li>
+            <li>You can now embed the speech bar into your web page by calling the <code>NUSA_embedSpeechBar()</code> function. For more information, see 'Speech-enabling your browser application' in the SDK help. [DNB-9855]</li>
+            <li>Microsoft Edge browser is now supported. [DNB-11045]</li>
+        </ul>
+        <h2>Solved issues</h2>
+        <ul>
+            <li>The microphone no longer turns off unexpectedly during dictation in an environment with constant background noise. [DNB-13310]</li>
+            <li>
+                <p>The <span class="command">next field</span> voice command now works correctly with auto-text fields. [DNB-11486]</p>
+            </li>
+            <li>
+                <p>The SDK no longer resets the cursor position after losing and regaining focus. [DNB-11238]</p>
+            </li>
+            <li>
+                <p>The microphone no longer stops recording on its own (this happened rarely). [DNB-13310]</p>
+            </li>
+            <li>
+                <p>The <code>data-nusa-marker-container</code> attribute is no longer ignored for some custom controls. [DNB-12492]</p>
+            </li>
+            <li>
+                <p>If unloading a browser page is aborted by your integration during the <code>onBeforeUnload</code> event, speech recognition no longer stops working. [DNB-12496]</p>
+            </li>
+            <li>
+                <p>The recognition rate no longer drops for short utterances (this happened rarely). [DNB-6619]</p>
+            </li>
+            <li>
+                <p>It is no longer possible to record into multiple browser tabs in parallel unintentionally. [DNB-11680]</p>
+            </li>
+        </ul>
+        <p class="note"><b>Note:</b> For information on previous releases, see: <a href="#ReleaseHistory">Release history</a>.</p>
+        <h2>Important information</h2>
+        <ul>
+            <li>Dragon Medical SpeechKit 3.3 Release 7 (Browser edition) requires Dragon Medical Server 3.1, 3.2 or 3.3.</li>
+            <li>Dragon Medical Server 3.3 is compatible with Browser editions 3.1, 3.2 and 3.3.</li>
+            <li>Filtering auto-texts (defining filters to deactivate auto-texts selectively) is deprecated and will no longer work.</li>
+            <li>Do not change or hide Browser edition GUI elements. Changing or hiding these elements risks the stability and compatibility of the product; Nuance cannot provide support for such integrations.</li>
+            <li>Web browser debugging consoles or debugging proxies (for example, Fiddler) cannot be used with speech recognition. The performance impact incurred by such infrastructure leads to unreliable speech recognition.</li>
+        </ul>
+        <h2>Supported edit controls</h2>
+        <ul>
+            <li>All HTML <code>&lt;input&gt;</code> and <code>&lt;textarea&gt;</code> controls.</li>
+            <li>CKEditor instances.</li>
+            <li><code>&lt;div&gt;</code> elements that have the HTML5 <code>contenteditable</code> attribute set to <code>true</code>.</li>
+        </ul>
+        <h2>Known issues</h2>
+        <ul>
+            <li>This release does not support mobile devices, including browsers (Firefox and Chrome) that do not use Microsoft Silverlight.</li>
+            <li>
+                <p>PowerMic buttons do not work the first time a speech-enabled page is opened after the Nuance PowerMic Extension has been updated. Refresh the page to use PowerMic buttons. [DNB-12282, DNB-12253]</p>
+            </li>
+            <li>
+                <p>PowerMic buttons are not handled by a speech-enabled page if the user clicks outside it or opens the personalization &amp; help window manually. [DNB-12246, DNB-12367, DNB-10612, DNB-12181]</p>
+            </li>
+            <li>
+                <p>If two speech-enabled pages are open and the personalization &amp; help window is opened from one of the pages, focus sometimes jumps to the other page when using PowerMic buttons. [DNB-11710]</p>
+            </li>
+        </ul>
+        <h2>Infrastructure</h2>
+        <h3>Infrastructure no longer supported</h3>
+        <ul>
+            <li>Dragon Medical SpeechKit 3.3 applications do not work with any server version prior to 3.0.</li>
+            <li>Mozilla Firefox 44 and lower are no longer supported (see Mozilla Firefox ESR Overview: <a href="https://www.mozilla.org/en-US/firefox/organizations/faq/" target="_blank">https://www.mozilla.org/en-US/firefox/organizations/faq/</a>).</li>
+            <li>Google Chrome 55 and lower are no longer supported.</li>
+            <li>Apple Safari versions lower than 11.0.2 (versions which require Microsoft Silverlight) are no longer supported.</li>
+            <li>In Dragon Medical Server 3.3 all version 2.0 and 2.1 client-based applications stop working.</li>
+        </ul>
+        <h3>Infrastructure changes planned for the next release</h3>
+        <ul>
+            <li>In Dragon Medical Server 3.4 all version 3.0 client-based applications will stop working.</li>
+            <li>Dragon Medical SpeechKit 3.4 applications will not work with version 3.0 servers.</li>
+            <li>Google Chrome 56 and lower will no longer be supported.</li>
+        </ul>
+        <h2>System requirements*</h2>
+        <table id="systemRequirements">
+            <col class="col2" />
+            <col class="col2" />
+            <col class="col2" />
+            <tr>
+                <th>&#160;</th>
+                <th>Recommended</th>
+                <th>Supported</th>
+            </tr>
+            <tr>
+                <th>Google Chrome</th>
+                <td>66              </td>
+                <td>57 - 66</td>
+            </tr>
+            <tr>
+                <th>Mozilla Firefox**</th>
+                <td>59             </td>
+                <td>45 - 59</td>
+            </tr>
+            <tr>
+                <th>Microsoft Internet Explorer on Windows***</th>
+                <td>-</td>
+                <td>10 - 11</td>
+            </tr>
+            <tr>
+                <th>Microsoft Edge</th>
+                <td>42</td>
+                <td>42</td>
+            </tr>
+            <tr>
+                <th>Microsoft Silverlight</th>
+                <td>5.1</td>
+                <td>5 - 5.1</td>
+            </tr>
+            <tr>
+                <th>Apple Safari on macOS****</th>
+                <td>11.0.2</td>
+                <td>11.0.2 - 11.1</td>
+            </tr>
+        </table>
+        <p>** Firefox for macOS is only supported with an external microphone.</p>
+        <p>*** Internet Explorer is only supported with the Compatibility View and Protected Mode disabled. Additionally, some <code>&lt;!doctype&gt;</code> definitions are not supported; use <code>&lt;!doctype html&gt;</code>. Dragon Medical SpeechKit (Browser edition) only supports Internet Explorer 10 on platforms for which Internet Explorer 11 is not made available by Microsoft.</p>
+        <p>**** For more information, see the 'Known issues' section above.</p>
+        <h2>System requirements - virtualized environments</h2>
+        <table>
+            <col>
+            </col>
+            <col>
+            </col>
+            <col>
+            </col>
+            <tr>
+                <th>&#160;</th>
+                <th>Recommended</th>
+                <th>Supported</th>
+            </tr>
+            <tr>
+                <th>Nuance PowerMic Extension: Server</th>
+                <td>&#160;</td>
+                <td>29.2.40.0  or higher</td>
+            </tr>
+            <tr>
+                <th>Nuance PowerMic Extension: Client</th>
+                <td>&#160;</td>
+                <td>29.2.40.0  or higher</td>
+            </tr>
+            <tr>
+                <th>Citrix XenApp</th>
+                <td>&#160;</td>
+                <td>6.5 or higher</td>
+            </tr>
+            <tr>
+                <th>Citrix XenDesktop</th>
+                <td>7</td>
+                <td>7.15 or higher</td>
+            </tr>
+            <tr>
+                <th>Citrix Receiver:&#160;Client</th>
+                <td>&#160;</td>
+                <td>
+                    <p>4.3 or higher</p>
+                </td>
+            </tr>
+            <tr>
+                <th>VMware Horizon View</th>
+                <td>&#160;</td>
+                <td>7.3 or higher</td>
+            </tr>
+            <tr>
+                <th>VMware Horizon Client</th>
+                <td>&#160;</td>
+                <td>3.5.2 or higher</td>
+            </tr>
+            <tr>
+                <th>Remote Desktop Services</th>
+                <td>Windows Server 2012 R2</td>
+                <td>
+                    <p>Windows Server 2008 R2</p>
+                    <p>Windows Server 2012 R2</p>
+                    <p>Windows Server 2016</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Remote Desktop Client</th>
+                <td>
+                    <p>Windows 10</p>
+                </td>
+                <td>
+                    <p>Windows 7</p>
+                    <p>Windows 8</p>
+                    <p>Windows 8.1</p>
+                    <p>Windows 10 </p>
+                </td>
+            </tr>
+            <tr>
+                <th>Remote Desktop Protocol</th>
+                <td>&#160;</td>
+                <td>7.0 or higher</td>
+            </tr>
+            <tr>
+                <th>Windows-based thin clients</th>
+                <td>&#160;</td>
+                <td>Windows Embedded Standard 7</td>
+            </tr>
+            <tr>
+                <th>Linux thin clients</th>
+                <td>Fujitsu Futro</td>
+                <td>
+                    <p>IGEL (For information on supported IGEL thin clients, see: <a href="http://edocs.igel.com/index.htm#10204052.htm" target="_blank">http://edocs.igel.com/index.htm#10204052.htm</a>)</p>
+                    <p>Fujitsu Futro S450 (operating system version eLux RP 4.9.0)</p>
+                    <p>Fujitsu Futro S520, S700, S720 (operating system version eLux RP 5.1)</p>
+                    <p>HP t610 (operating system version eLux RP 4.4.0)</p>
+                </td>
+            </tr>
+        </table>
+        <h3>Audio configuration</h3>
+        <p>In virtualized environments, hardware and software requirements depend on the audio system and configuration.</p>
+        <table>
+            <col>
+            </col>
+            <col>
+            </col>
+            <col>
+            </col>
+            <col>
+            </col>
+            <tr>
+                <th>&#160;</th>
+                <th>Audio system</th>
+                <th>Configuration</th>
+                <th>Bandwidth requirements</th>
+            </tr>
+            <tr>
+                <th>Citrix environments</th>
+                <td>HDX audio</td>
+                <td>Audio quality must be set to high (Citrix XenApp default:&#160;medium)</td>
+                <td>150 kbit/sec</td>
+            </tr>
+            <tr>
+                <th>&#160;</th>
+                <td>USB redirection*</td>
+                <td>Full audio and button control support</td>
+                <td>400 kbit/sec</td>
+            </tr>
+            <tr>
+                <th>VMware environments</th>
+                <td>Real-Time Audio-Video (RTAV)</td>
+                <td>Default</td>
+                <td>200 kbit/sec or higher</td>
+            </tr>
+            <tr>
+                <th>&#160;</th>
+                <td>USB redirection*</td>
+                <td>Full audio and button control support</td>
+                <td>1.4 Mbit/sec</td>
+            </tr>
+            <tr>
+                <th>RDS environments</th>
+                <td>RDS&#160;audio</td>
+                <td>Default</td>
+                <td>Approximately 1.4 Mbit/sec</td>
+            </tr>
+        </table>
+        <p class="indent2">* With USB redirection, button events are forwarded automatically; the Nuance PowerMic Extension is not required.</p>
+        <h3>Supported microphones</h3>
+        <p>Audio works for all microphones listed. Support for button controls (Chrome on Windows 7 or higher with the PowerMic Web Extension only) is listed below:</p>
+        <table>
+            <col>
+            </col>
+            <col>
+            </col>
+            <col>
+            </col>
+            <col>
+            </col>
+            <col>
+            </col>
+            <thead>
+                <tr>
+                    <th>&#160;</th>
+                    <th>Citrix XenApp</th>
+                    <th>Citrix XenDesktop</th>
+                    <th>RDS</th>
+                    <th>VMware Horizon View</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nuance PowerMic II</td>
+                    <td>yes*</td>
+                    <td>yes*</td>
+                    <td>yes*</td>
+                    <td>yes*</td>
+                </tr>
+                <tr>
+                    <td>Nuance PowerMic II with barcode scanner</td>
+                    <td>yes*</td>
+                    <td>yes*</td>
+                    <td>yes*</td>
+                    <td>yes*</td>
+                </tr>
+                <tr>
+                    <td>Nuance PowerMic III</td>
+                    <td>yes*</td>
+                    <td>yes*</td>
+                    <td>yes*</td>
+                    <td>yes*</td>
+                </tr>
+                <tr>
+                    <td>Philips SpeechMike Air</td>
+                    <td>yes**</td>
+                    <td>yes**</td>
+                    <td>yes**</td>
+                    <td>yes**</td>
+                </tr>
+                <tr>
+                    <td>Philips SpeechMike Premium</td>
+                    <td>yes**</td>
+                    <td>yes**</td>
+                    <td>yes**</td>
+                    <td>yes**</td>
+                </tr>
+                <tr>
+                    <td>Philips SpeechMike III</td>
+                    <td>yes**</td>
+                    <td>yes**</td>
+                    <td>yes**</td>
+                    <td>yes**</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="compact2">* To enable Nuance PowerMic controls, install the Nuance PowerMic Citrix Extension/PowerMic RDS Client Extension/PowerMic VMware Client Extension.</p>
+        <p class="compact2">** To enable button controls for third-party devices, install the corresponding redistributable packages.</p>
+        <h3>Remarks</h3>
+        <ul>
+            <li> For more information on virtualized environments, see the <b>Docs &amp; Guidelines</b> folder of the Nuance virtual extensions package on the <a href="http://www.nuancehealthcaredeveloper.com/" target="_blank">Nuance Healthcare Development Platform</a>.</li>
+            <li>Citrix environments: For Nuance PowerMic button support, install the Nuance PowerMic Citrix Extension on the Citrix client and server/virtual desktop where your application is hosted.</li>
+            <li>VMware Horizon Client 4.3.0 or higher: Install the new 64-bit Nuance PowerMic VMware Client Extension on the VMware client.</li>
+            <li>For microphone button support, third-party drivers for Philips, Grundig and Olympus devices need to be provided by the device vendor and deployed both on the Citrix/RDS client and Citrix/RDS server.</li>
+        </ul>
+        <h3>*End-of-life: third party environments</h3>
+        <p>Support for third party environments is only valid as long as they are supported by the corresponding vendor and might be subject to other restrictions. Please contact Nuance Technical Support for details. For more information, see the documentation delivered with the third party product and supporting Nuance documentation.</p>
+        <p>When standard support by the vendor has stopped, Nuance will continue support if an issue is specific to the Nuance solution, within the limitations of the vendor’s standard end-of-life and Nuance's policy. This means that issues that are a combination of the vendor’s component and the Nuance solution cannot be supported.</p>
+        <h2>Dragon Medical SpeechKit product life cycle</h2>
+        <p>Nuance provides support throughout the life cycle of one version and point release. Please note that Nuance will not perform problem analysis after the scheduled start of restricted maintenance. Dragon Medical Server versions released over three months after the dates stated here will not work with these client editions.</p>
+        <table>
+            <col style="width: 316px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <col style="width: 105px;">
+            </col>
+            <tr>
+                <th>Browser edition</th>
+                <th>3.0</th>
+                <th>3.1</th>
+                <th>3.2</th>
+                <th>3.3</th>
+            </tr>
+            <tr>
+                <th>Restricted maintenance (scheduled start)</th>
+                <td>2017-07-26</td>
+                <td>2018-02-01</td>
+                <td>2018-06-02</td>
+                <td>2019-05-03*</td>
+            </tr>
+        </table>
+        <p>* Preliminary date; might change in future release notes.</p>
+        <h2><a name="ReleaseHistory"></a>Release history</h2>
+        <h3>Solved issues in version 3.2 Release 4 (2017-12-06)</h3>
+        <ul>
+            <li>For custom edit controls, a line break property <code>newlineFormat</code> and a paragraph break property <code>paragraphFormat</code> have been added; the properties <code>newlineFormatString</code> and <code>paragraphFormatString</code> are now ignored. [DNB-11353]</li>
+            <li>Navigation between embedded fields via PowerMic buttons now works properly. [DNB-10861]</li>
+            <li>In Microsoft Internet Explorer 11, the cursor position is now synchronized with the HTML element's selection. [DNB-11274]</li>
+            <li>The <span class="command">new paragraph</span> voice command now works properly. [DNB-11320]</li>
+            <li>If the PowerMic Web Extension installation window is closed or ignored, it will not appear again for 7 days; if the user selects <span class="userInterface">Don't show me this message again</span>, the installation window will not appear again for a year. [DNB-11343]</li>
+            <li>Recording no longer stops unexpectedly due to an interrupted connection to the speech recognition server. [DNB-11718]</li>
+            <li>PowerMic buttons now work more reliably in Google Chrome on Windows. [DNB-11528]</li>
+        </ul>
+        <h3>New in version 3.2 Release 1 (2017-05-31)</h3>
+        <ul>
+            <li>The Browser edition (Chrome on Windows 7 or higher only) now provides microphone button support for Nuance-hosted systems.</li>
+            <li>
+                <p>Browser edition user notifications have been reworked and are now less intrusive.</p>
+            </li>
+        </ul>
+    </body>
+</html>

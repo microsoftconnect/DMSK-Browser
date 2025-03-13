@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Concepts">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>Deferred correction concept</title>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1><a name="kanchor29"></a>Deferred correction concept</h1>
+        <p>Deferred correction is a workflow in which the author works with frontend recognition (<span class="mc-variable DocLoc.DM_Server variable">Dragon Medical Server</span> returns recognition results in real time) and another user, typically a transcriptionist, corrects the results at a later point in time.</p>
+        <p data-mc-conditions="Danube.Browser">Deferred correction is provided through specific <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> URLs for each release channel. For more information and a list of URLs, see <a href="../BrowserIntroduction/DANUBE_RELEASE_CHANNELS_BROWSER.htm">Release channels</a>.</p>
+        <h3>Workflow</h3>
+        <p>A typical workflow:</p>
+        <p>
+            <img src="../Resources/DefCorWorkflow.png" class="pageWidth" alt="">
+            </img>
+        </p>
+        <ol>
+            <li value="1">
+                <p>The author uses <a href="#Frontend">frontend mode</a> to dictate the report.</p>
+                <p>The author can make corrections to the recognition results using their voice or keyboard.</p>
+                <p>If the author wants a transcriptionist to make the corrections, the integrator can save the document for later correction.</p>
+            </li>
+            <li value="2">The transcriptionist opens the document in <a href="#Correction">correction mode</a>, plays back the audio and edits the recognition results.</li>
+            <li value="3">The author opens the document in frontend mode, reviews the corrected text and can edit it using their voice or keyboard.</li>
+        </ol>
+        <h3>Important</h3>
+        <ul>
+            <li>The integration must set and change the document mode, based on user type.</li>
+            <li>The integration must save the text of the document when it's closed and reload it when the document is opened.</li>
+            <li>The integration must send documents between users. <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> doesn't provide a mechanism to do this, or provide worklists for users. <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> provides the recognition and playback interface.</li>
+            <li>
+                <p>The integration must prevent multiple users from opening the same document simultaneously. <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> returns an error if the current document is locked by another user. Changes to the document should only be made if the user successfully opens the document.</p>
+            </li>
+            <li>
+                <p>Multiple authors recording into a document isn't supported; your integration must ensure this can't occur.</p>
+            </li>
+        </ul>
+        <h3><a name="Adaptation"></a>Supporting user profile adaptation</h3>
+        <p>Recognition results in the system are used to adapt authors' <a href="../Concepts/DANUBE_ADAPTATION.htm">speech recognition profiles</a> to improve recognition accuracy over time.&#160;An author's profile is adapted only from their own updates to a document:</p>
+        <ul>
+            <li>
+                <p>The author's initial dictations.</p>
+            </li>
+            <li>
+                <p>The author's own corrections in frontend mode.</p>
+            </li>
+            <li>
+                <p>Transcriptionist corrections that the author has reviewed by opening and saving the document after the transcriptionist corrected it. </p>
+            </li>
+        </ul>
+        <p>Edits made by transcriptionists aren't used to adapt the author's profile unless the author opens and saves the document after the transcriptionist corrects it.</p>
+        <p>In some cases, uncorrected text can lead to reduced recognition accuracy over time. "Uncorrected text" refers to text that the system recognized incorrectly and that wasn't corrected. <MadCap:conditionalText data-mc-conditions="Danube.Browser">To mitigate this, include a final sign-off in the deferred correction workflow. </MadCap:conditionalText></p>
+        <h4>Including a final sign-off</h4>
+        <p>To make sure the system learns from corrected text, include a final review/sign off stage in your implementation. It's important that the author reopens the document to sign it off after the transcriptionist has made corrections. Your integration should save the document once the author signs it off.</p>
+        <p data-mc-conditions="Danube.Browser">Be aware that the system might send documents for adaptation that haven't been signed off. When this happens, transcriptionists' corrections aren't included in adaptation.&#160;After the author signs off the final, corrected text, the document will be sent for adaptation again. In this scenario, both corrected and uncorrected text influence the author's user profile.</p>
+        <h3 data-mc-conditions="Danube.Browser">System requirements</h3>
+        <h4 data-mc-conditions="Danube.Browser">Supported browsers</h4>
+        <ul>
+            <li>
+                <p data-mc-conditions="Danube.Browser">Google Chrome</p>
+            </li>
+            <li>
+                <p data-mc-conditions="Danube.Browser">Microsoft Edge</p>
+            </li>
+        </ul>
+        <h4 data-mc-conditions="Danube.Browser">Foot pedals</h4>
+        <p>For correctionists in <a href="../../Concepts/DANUBE_DEFERRED_CORRECTION_BROWSER.htm">deferred correction</a> workflows, some foot pedals are supported. <MadCap:conditionalText data-mc-conditions="Danube.Browser">Google Chrome is required. </MadCap:conditionalText>Open the personalization &amp; help window &gt; <span class="userInterface">Options</span> page to configure the action for the play, rewind and fast forward pedals and enable/disable the press-and-hold behavior. For more information on supported models, see the release notes delivered with your version of <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>.</p>
+        <h4 data-mc-conditions="Danube.Browser">On-premises systems</h4>
+        <p data-mc-conditions="Danube.Browser">DM SpeechKit (Browser edition) only supports deferred correction in Nuance-hosted systems. This feature isn't available for on-premises systems.</p>
+        <h2><a name="Document_mode"></a>Document modes</h2>
+        <h3><a name="Frontend"></a>Frontend mode</h3>
+        <table style="width: 100%;" data-mc-conditions="Danube.Browser">
+            <col />
+            <tbody>
+                <tr>
+                    <th colspan="2" data-mc-conditions="Danube.Browser">Speech bar </th>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 0px;">
+                        <table style="width: 100%;">
+                            <col />
+                            <col />
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p class="compact" data-mc-conditions="Danube.Browser">Recording</p>
+                                    </td>
+                                    <td data-mc-conditions="Danube.Browser">
+                                        <img src="../Resources/Images/Browser_Author recording.png" alt="" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li>When the author uses speech recognition to dictate over recognized text, the original audio is deleted and replaced with the new audio.</li>
+        </ul>
+        <p>Be aware of the following functionality restrictions in this mode: </p>
+        <ul>
+            <li data-mc-conditions="Danube.Browser">
+                <p>The author can't play back the audio.</p>
+            </li>
+            <li>
+                <p>When the author deletes text using the keyboard, the corresponding audio isn't deleted. Deleting text using the keyboard isn't recommended as a transcriptionist will hear the audio when playing back and might re-add the deleted text to the document.</p>
+            </li>
+        </ul>
+        <h3><a name="Correction"></a>Correction mode</h3>
+        <table style="width: 100%;" data-mc-conditions="Danube.Browser">
+            <col />
+            <tbody>
+                <tr>
+                    <th colspan="2">Speech bar - playback enabled</th>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 0px;">
+                        <table style="width: 100%;">
+                            <col />
+                            <col />
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <p class="compact">Playing </p>
+                                    </td>
+                                    <td>
+                                        <img src="../Resources/Images/Browser_Correctionist Playing.png" alt="" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Paused </td>
+                                    <td>
+                                        <img src="../Resources/Images/Browser_Correctionist Paused.png" alt="" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li>Correction mode is for correcting recognized text; this mode adds playback, rewind, fast forward and audio position seeking functionality for the recorded audio. </li>
+            <li>Correction mode enables transcriptionists to correct the text. It can also be used when a user wants to listen to the audio without recording anything (recording isn't possible in this mode).</li>
+            <li>On the speech bar, the audio cursor position is displayed on the left of the slider and the audio length is displayed on the right side of the slider. Playback starts from the audio position slider, regardless of where the text cursor is positioned in the document. The playback speed can be adjusted via the hamburger menu.</li>
+            <li>The audio cursor position and length are displayed as minutes:seconds when the duration is less than one hour and hours:minutes:seconds when duration is longer than one hour.</li>
+            <li>Rewinding and fast-forwarding are supported.</li>
+            <li>Audio can be played back at a minimum of 0.5x speed and a maximum of 2x speed.</li>
+            <li>Transcriptionists can play back audio from one section of the recognized text while typing in another section of the text.</li>
+        </ul>
+        <p>Be aware of the following functionality restrictions in this mode:</p>
+        <ul>
+            <li>
+                <p>Edits made by transcriptionists don't change the audio.</p>
+            </li>
+            <li>
+                <p>The last audio position a transcriptionist worked on in a document is remembered when it is reloaded, even if it is a different transcriptionist who then opens the document.</p>
+            </li>
+            <li>Each transcriptionist needs a <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> license.</li>
+            <li>Recording isn't supported.</li>
+        </ul>
+        <h2>Playing back audio</h2>
+        <ul>
+            <li>Audio is played back in the order of the recognized text.</li>
+            <li>Auto-texts and voice commands can be used in frontend mode but won't be played back.</li>
+            <li>Recognized text isn't highlighted during playback.</li>
+            <li>If an author types over recognized text and then selects it and dictates over it, both the original audio and the new audio will play back.</li>
+        </ul>
+        <h2>Configuring a hotkey for audio and text cursor synchronization</h2>
+        <p>Transcriptionists can configure a hotkey to synchronize the text cursor with the audio position. Open the personalization and help window &gt; <span class="userInterface">Settings</span> &gt; <b>Audio and Text Cursor Synchronization</b>.</p>
+        <h3>Requirements</h3>
+        <ul>
+            <li>Supported keys: English alphabet (a - z), numbers (0 - 9) and modifiers (CTRL, ALT, SHIFT).</li>
+            <li>Keyboard combination format: Modifiers + key.</li>
+            <li>CTRL or ALT is required; SHIFT is optional.</li>
+        </ul>
+        <h3>Invalid hotkeys</h3>
+        <p>The following keyboard combinations aren't allowed:</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>
+                        <p class="compact">ALT + F</p>
+                        <p class="compact">ALT + E</p>
+                    </td>
+                    <td>
+                        <p class="compact">CTRL + A</p>
+                        <p class="compact">CTRL + C</p>
+                        <p class="compact">CTRL + F</p>
+                        <p class="compact">CTRL + P</p>
+                        <p class="compact">CTRL + O</p>
+                        <p class="compact">CTRL + S</p>
+                        <p class="compact">CTRL + V</p>
+                        <p class="compact">CTRL + X</p>
+                        <p class="compact">CTRL + Y</p>
+                        <p class="compact">CTRL + Z</p>
+                        <p class="compact">CTRL + =</p>
+                        <p class="compact">CTRL + -</p>
+                        <p class="compact">CTRL + Insert</p>
+                        <p class="compact">CTRL + arrow left</p>
+                        <p class="compact">CTRL + arrow right</p>
+                        <p class="compact">CTRL + Delete</p>
+                        <p class="compact">CTRL + Backspace</p>
+                    </td>
+                    <td>
+                        <p class="compact">SHIFT + End</p>
+                        <p class="compact">SHIFT + Home</p>
+                        <p class="compact">SHIFT + Insert</p>
+                        <p class="compact">SHIFT + Delete</p>
+                    </td>
+                    <td>
+                        <p class="compact">CTRL + SHIFT + arrow left</p>
+                        <p class="compact">CTRL + SHIFT + arrow right</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-mc-conditions="Danube.Browser"><b>Note:</b> If a user specifies a hotkey combination that  conflicts with browser functionality, they might experience problems with the app.</p>
+        <h2><a name="Document_tokens"></a><a name="kanchor30"></a>Document tokens</h2>
+        <p>Your integration must generate and store document tokens. A document token is a cryptographically generated token used to validate authorization to access the document. It differs from a document ID in that the token should never be disclosed; for example, via the GUI, logging, etc. Make sure it is securely stored. Once a document is created with a token, you must supply the same token when the document is reopened.</p>
+        <p>Be aware that:</p>
+        <ul>
+            <li>
+                <p>Once a document token has been assigned to a document, the token can't be modified.</p>
+            </li>
+            <li data-mc-conditions="Danube.Browser">
+                <p>Document tokens should be generated on the server side, whenever possible.</p>
+            </li>
+            <li data-mc-conditions="Danube.Browser">
+                <p>Document tokens should be stored immediately upon being generated; this avoids losing the token and being unable to reopen documents.</p>
+            </li>
+        </ul>
+        <h3>Security requirements</h3>
+        <p>Document tokens must be cryptographically generated to ensure sufficient entropy and uniqueness. Make sure your integration fulfills the following security requirements for document tokens:</p>
+        <ul>
+            <li>
+                <p>Document tokens must be generated by a CSPRNG (Cryptographically Secure Pseudo-Random Number Generator). The following APIs are recommended:</p>
+                <p class="indent2">BCryptGenRandom function (bcrypt.h). See:&#160;<a href="https://docs.microsoft.com/en-us/windows/win32/api/bcrypt/nf-bcrypt-bcryptgenrandom">https://docs.microsoft.com/en-us/windows/win32/api/bcrypt/nf-bcrypt-bcryptgenrandom</a></p>
+                <p class="indent2">OpenSSL rand. See:&#160;<a href="https://www.openssl.org/docs/man3.0/man1/openssl-rand.html">https://www.openssl.org/docs/man3.0/man1/openssl-rand.html</a></p>
+                <p class="indent2" data-mc-conditions="Danube.Browser">Crypto.getRandomValues(). See: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues">https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues</a></p>
+            </li>
+            <li>
+                <p>Document tokens must be at least 32 bytes in length.</p>
+            </li>
+            <li>
+                <p>Document tokens must be Base64 encoded strings.</p>
+            </li>
+        </ul>
+        <h3>See also</h3>
+        <p class="compact2" data-mc-conditions="Danube.Browser"><a href="DANUBE_USE_CASE_DEFERRED_CORRECTION_BROWSER.htm">Deferred correction use case</a>
+        </p>
+        <p class="indent2" data-mc-conditions="Danube.Browser"><a href="../BrowserSamples/DANUBE_SAMPLE_DEFERRED_CORRECTION_BROWSER.htm">Deferred correction sample</a>
+        </p>
+    </body>
+</html>

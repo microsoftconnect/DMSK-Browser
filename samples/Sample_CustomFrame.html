@@ -1,0 +1,22 @@
+﻿<!doctype html>
+
+<html >
+<head>
+    <title></title>
+    <script language="javascript" type="text/javascript">
+        var lastFocussedElement;
+        function onFocus(element) {
+           lastFocussedElement = element;
+           parent.frameFocus(element);
+        }
+	</script>
+</head>
+<body>
+    Frame Control 1:<br />
+    <div contenteditable="true" id="edit1" onfocus="onFocus(this)" style="width: 100%; min-height: 100px;height:100px; overflow:auto;border:1px solid black"></div>
+    Frame Control 2:<br />
+    <div contenteditable="true" id="edit2" onfocus="onFocus(this)" style="width: 100%; min-height: 100px;height:100px; overflow:auto;border:1px solid black"></div>
+    Frame Control 3:<br />
+    <div contenteditable="true" id="edit3" onfocus="onFocus(this)" style="width: 100%; min-height: 100px;height:100px; overflow:auto;border:1px solid black"></div>
+</body>
+</html>

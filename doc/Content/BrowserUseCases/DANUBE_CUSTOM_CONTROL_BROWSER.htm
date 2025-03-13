@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Use Cases" data-mc-ignored-words="Sample_CustomFrame;NUSA_registerCustomControlType;nusa" data-mc-conditions="Danube.Browser">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>
+			Custom controls
+		</title>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1><a name="kanchor40"></a>Custom controls</h1>
+        <p><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> doesn't support all types of text controls out-of-the-box. Unsupported text controls can be speech-enabled by providing custom implementations.</p>
+        <p>After the <code>NUSA_configure()</code> function has been called, <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> will scan the HTML page for all supported edit controls (such as regular HTML form text fields) and for elements that have been tagged with a <code>data-nusa-custom-control-type</code> attribute. The text and selection ranges of the latter won't be accessed directly by <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>; instead, <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> will call functions provided by the integration as described below.</p>
+        <h2>Prerequisites</h2>
+        <p>You've <a href="DANUBE_SPEECH_ENABLE_BROWSER.htm">initialized speech recognition</a> for a web page.</p>
+        <h2>Procedure</h2>
+        <h3>Edit controls that are represented by a focusable HTML element</h3>
+        <p>The following procedure is valid for custom edit controls that are represented by an HTML element for which JavaScript 'focus' or 'click' events are fired whenever the edit control is focused. </p>
+        <p>Example: An edit control is implemented as an ActiveX, Flash or Silverlight object, or as a JavaScript editor.</p>
+        <p>Proceed as follows:</p>
+        <ol>
+            <li value="1">In your <code>NUSA_configure()</code> function, register the custom control type and set its properties and methods as described in section <a href="#Custom_control_interface">Custom control interface</a>.</li>
+            <li value="2">
+                <p>On the HTML page, mark all edit control elements with the control type; for example: <code>&lt;object data-nusa-custom-control-type="MyCustomControl"</code>.</p>
+                <p>The attribute <code>data-nusa-custom-control-type</code> specifies the custom control type name as passed to the <code>NUSA_registerCustomControlType(customControlTypeName)</code> call.</p>
+                <p>For more information, see the <span class="path">Sample_CustomControl.html</span> sample implementation delivered with the package.</p>
+            </li>
+        </ol>
+        <p class="note"><b>Note:</b> You can register multiple custom control types if different kinds of edit controls have to be accessed.</p>
+        <h3>Edit controls that can't be accessed directly by <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span></h3>
+        <p>The following procedure is valid for custom edit controls without a one-to-one association with an HTML element that can be assigned a <code>data-nusa-custom-control-type</code> attribute; for these edit controls, <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> doesn't receive any JavaScript 'focus' or 'click' events.</p>
+        <p>Example: Multiple edit controls are contained within a single ActiveX, Flash or Silverlight object, or a JavaScript editor dynamically creates the <code>&lt;div&gt;</code> elements on which it operates.</p>
+        <p class="note"><b>Note:</b> Edit controls that are contained in an <code>iframe</code> can be speech-enabled automatically by calling the <code>NUSA_initialize()</code> function. For more information and examples, see: <a href="DANUBE_SPEECH_ENABLE_BROWSER.htm#Deferred">Deferred initialization of <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span></a>.</p>
+        <p><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> must be informed which edit control has the input focus and must be able to set the focus to individual edit controls. Therefore, the integration must provide functions for getting and setting the focus.</p>
+        <p>Proceed as follows:</p>
+        <ol>
+            <li value="1">In your <code>NUSA_configure()</code> function, register the custom control type for the edit control(s) and a custom container type, and set the functions as described in sections <a href="#Custom_control_interface">Custom control interface</a> and <a href="#Custom_container_interface">Custom container interface</a>. Example: The custom control type is registered by the name "MyCustomControl" and the custom container type is registered by the name "MyCustomContainer".</li>
+            <li value="2">
+                <p>As the edit controls don't have a one-to-one association with HTML elements that could be assigned <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> attributes, you must add 'proxy' elements to the HTML page:</p>
+                <p class="indent2">Add a proxy for the container: <code>&lt;div id="MyCustomContainerInstance" data-nusa-custom-container-type="MyCustomContainer"&gt;&lt;/div&gt;</code>. The <code>data-nusa-custom-container-type</code> attribute is set to the name the custom container was registered by.</p>
+                <p class="indent2">For each custom control you want to speech-enable, add a proxy element that refers to the container: <code>&lt;div id="MyCustomControlInstance_1" data-nusa-custom-container-id="MyCustomContainerInstance" data-nusa-custom-control-type="MyCustomControl"&gt;&lt;/div&gt; ... &lt;div id="MyCustomControlInstance_x" data-nusa-custom-container-id="MyCustomContainerInstance" data-nusa-custom-control-type="MyCustomControl"&gt;&lt;/div&gt;</code>. The <code>data-nusa-custom-container-id</code> attribute is set to the ID of the container element and the <code>data-nusa-custom-control-type</code> attribute is set to the name the custom control was registered by.</p>
+            </li>
+            <li value="3">The proxy elements are used as parameters on the custom control and container functions. Your implementation of these functions must map between these proxy elements and the actual edit controls.</li>
+            <li value="4">Call the <code>NUSA_customContainerFocussed()</code> function whenever the focus is set to one of the edit controls in the container.</li>
+        </ol>
+        <p>For more information, see the <span class="path">Sample_CustomFrameContainer.html</span> sample implementation and the <code>iframe</code> <span class="path">Sample_CustomFrame.html</span> delivered with the package.</p>
+        <h2><a name="Custom_control_interface"></a>Custom control interface</h2>
+        <h3>Important information</h3>
+        <p>None of the methods on the custom control interface must change the focus to the targeted edit control. Focus changes between edit controls must be handled separately from changes within edit controls (insertion point change, selection change, text change). </p>
+        <p>Edit controls must keep track of the last location of the selection or insertion point. For example, the insertion point is in the middle of an edit control and the focus is moved away from that edit control. If the focus is then set back to that edit control programmatically (for example, via a <span class="command">next field</span> command), the insertion point should again be at the original location, in the middle of the edit control.</p>
+        <p>This information is especially relevant for programmatic selection changes. If, for example, <code>setSelection()</code> is called for an unfocused edit control, the focus must not be set to this edit control; only the new location of the insertion point must be stored. If later the focus changes to this control, the insertion point should be at the location previously stored.</p>
+        <h3>Registering a custom control</h3>
+        <p>To speech-enable your custom controls, you must register a custom control type, implement a set of functions for retrieving and setting text and selection ranges that are needed to interact with the speech recognition system, and identify the HTML elements that represent the corresponding custom controls on the page.</p>
+        <ul>
+            <li>
+                <p><code>function NUSA_registerCustomControlType(customControlTypeName)</code>
+                </p>
+                <p class="compact2">Registers a new custom control type.</p>
+                <p class="compact2">Parameter:</p>
+                <p class="compact3"><code>customControlTypeName</code> - a string used to identify the custom control type. This name must be used as the value of a <code>data-nusa-custom-control-type</code> attribute on elements representing an edit control of this type.</p>
+                <p class="indent2">Return value: a CustomControl instance that has been associated with the given name.</p>
+            </li>
+        </ul>
+        <p>To disable speech recognition for a custom control, remove the <code>data-nusa-custom-control-type</code> attribute and call <code>NUSA_reinitializeVuiForm()</code>. The <code>data-nusa-enabled</code> attribute can't be used for custom controls.</p>
+        <h3>Custom control members</h3>
+        <p>The following properties and methods must be set on the CustomControl instance returned by <code>NUSA_registerCustomControlType()</code>.</p>
+        <p class="warning"><span class="important">Important:</span> All properties and methods are mandatory.</p>
+        <p>Properties to be set:</p>
+        <ul>
+            <li>
+                <p class="compact"><code>newlineFormat</code>
+                </p>
+                <p class="indent2">String that represents a line break in the control's text.</p>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <p class="compact"><code>paragraphFormat</code>
+                </p>
+                <p class="indent2">String that represents a paragraph break in the control's text.</p>
+            </li>
+        </ul>
+        <p>These strings must match the characters that your edit control uses for a line break and a paragraph break. If your edit control doesn't support paragraphs, use two line breaks. For example, if <code>newlineFormat = "\n"</code>:</p>
+        <p class="indent2"><code>paragraphFormat = "\n\n";</code>
+        </p>
+        <p>If your edit control supports single-line text fields only, omit these strings.</p>
+        <p>Methods to be implemented:</p>
+        <ul>
+            <li>
+                <p><code>function replaceText(element, text, fromPos, length )</code>
+                </p>
+                <p class="compact2">Replaces part of the text in the specified custom control.</p>
+                <p class="compact2">Parameters:</p>
+                <p class="compact3"><code>element</code> – HTML element representing the custom control.</p>
+                <p class="compact3"><code>text</code> – the new text as string.</p>
+                <p class="compact3"><code>fromPos</code> – position of the first character to be replaced (the first character of text has <code>fromPos</code> '0').</p>
+                <p class="indent3"><code>length</code> – number of characters to be replaced.</p>
+                <p class="indent2">After a <code>replaceText()</code> call, the insertion point must be located at the same position in the text as before the call. This means that if <code>replaceText()</code> inserts or removes characters to the left of the current insertion point or selection, the location of the insertion point must be moved accordingly. If <code>replaceText()</code> modifies text to the right of the insertion point, the insertion point must not change. If <code>replaceText()</code> modifies characters at the insertion point, the insertion point must be set to the end of the modified region. Ideally, if <code>replaceText()</code> is called while the user is typing and modifying text to the left or right of the typing location, this won't interfere with the user's keyboard input. This is to ensure that speech recognition results can be inserted in the text asynchronously while the user is, for example, correcting a misrecognition at another location in the text.</p>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <p><code>function getText(element)</code>
+                </p>
+                <p class="compact2">Retrieves the current text of the specified custom control.</p>
+                <p class="compact2">Parameter:</p>
+                <p class="compact3"><code>element</code> – HTML element representing the custom control.</p>
+                <p class="indent2">Return value: the current text as string.</p>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <p><code>function getSelectionText(element)</code>
+                </p>
+                <p class="compact2">Retrieves the currently selected text of the specified custom control.</p>
+                <p class="compact2">Parameter:</p>
+                <p class="compact3"><code>element</code> – HTML element representing the custom control.</p>
+                <p class="indent2">Return value: the selected text as string.</p>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <p><code>function getSelection(element)</code>
+                </p>
+                <p class="compact2">Retrieves the current selection range of the specified custom control.</p>
+                <p class="compact2">Parameter:</p>
+                <p class="compact3"><code>element</code> – HTML element representing the custom control.</p>
+                <p class="compact2">Return value: <code>NUSA_selectionInfo</code> object whose <code>start</code> and <code>length</code> properties specify the selected text range. </p>
+                <p class="compact2">Example: </p>
+                <p class="compact3"><code>var selInfo = new NUSA_selectionInfo(); </code>
+                </p>
+                <p class="indent3"><code>selInfo.start = ...; selInfo.length = ...;</code>
+                </p>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <p><code>function setSelection(element, start, length)</code>
+                </p>
+                <p class="compact2">Sets the selection in the specified custom control.</p>
+                <p class="compact2">Parameter:</p>
+                <p class="compact3"><code>element</code> – HTML element representing the custom control.</p>
+                <p class="compact3"><code>start</code> – position of the first character to select.</p>
+                <p class="indent3"><code>length</code> – length of the selection.</p>
+            </li>
+        </ul>
+        <h3>Example</h3>
+        <p class="compact"><code>var customControlType = NUSA_registerCustomControlType("MyCustomControl");</code> </p>
+        <p class="compact"><code>customControlType.newlineFormat = "\n";</code>
+        </p>
+        <p class="compact"><code>customControlType.paragraphFormat = "\v";</code>
+        </p>
+        <p class="compact"><code>customControlType.replaceText = myCustomControl_replaceText;</code> </p>
+        <p class="compact"><code>customControlType.getText = myCustomControl_getText;</code> </p>
+        <p class="compact"><code>customControlType.getSelectionText = myCustomControl_getSelectionText;</code> </p>
+        <p class="compact"><code>customControlType.getSelection = myCustomControl_getSelection;</code> </p>
+        <p class="compact"><code>customControlType.setSelection = myCustomControl_setSelection;</code> </p>
+        <p><code>function myCustomControl_replaceText(...) { ... }</code> </p>
+        <h2><a name="Custom_container_interface"></a>Custom container interface</h2>
+        <h3>Registering a custom container</h3>
+        <p>To implement focus handling for custom controls that can't be accessed directly by <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>, you must register a custom container type in addition to the custom control type and implement a set of functions for retrieving and setting the focus.</p>
+        <ul>
+            <li>
+                <p><code>function NUSA_registerCustomContainerType(customContainerTypeName)</code>
+                </p>
+                <p class="compact2">Registers a new custom container type.</p>
+                <p class="compact2">Parameter:</p>
+                <p class="compact3"><code>customContainerTypeName</code> - a string used to identify the custom container type. This name must be used as the value of a <code>data-nusa-custom-container-type</code> attribute on elements representing a container of this type.</p>
+                <p class="indent2">Return value: a CustomContainer instance that has been associated with the given name.</p>
+            </li>
+        </ul>
+        <h3>Custom container members</h3>
+        <p>The following methods must be set on the CustomContainer instance returned by <code>NUSA_registerCustomContainerType()</code>.</p>
+        <p class="note"><b>Note:</b> The <code>element</code> parameters of these functions refer to the HTML elements that act as proxies for the actual edit controls and that have been tagged with the <code>data-nusa-custom-control-type</code> attribute; you must map between these proxy elements and the actual edit controls.</p>
+        <p class="warning"><span class="important">Important:</span> All methods are mandatory.</p>
+        <p>The methods to be implemented:</p>
+        <ul>
+            <li>
+                <p><code>function getFocussedElement(containerElement)</code>
+                </p>
+                <p class="compact2">Returns the focused edit control in the specified <code>containerElement</code>.</p>
+                <p class="compact2">Parameter:</p>
+                <p class="indent3"><code>containerElement</code> – HTML element tagged with the <code>data-nusa-custom-container-type</code> attribute.</p>
+                <p class="indent2">Return value: the HTML element tagged with the <code>data-nusa-custom-control-type</code> attribute that acts as proxy for the currently focused edit control in the container.</p>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <p><code>function setFocussedElement(element)</code>
+                </p>
+                <p class="compact2">Sets the focus to the specified edit control.</p>
+                <p class="compact2">Parameter:</p>
+                <p class="indent3"><code>element</code> – the HTML element tagged with the <code>data-nusa-custom-control-type</code> attribute that acts as proxy for the edit control to be focused.</p>
+            </li>
+        </ul>
+        <h3>Example</h3>
+        <p class="compact"><code>var customContainerType = NUSA_registerCustomContainerType("MyCustomContainer");</code><![CDATA[  ]]></p>
+        <p class="compact"><code>customContainerType.getFocussedElement = myCustomContainer_getFocussedElement;</code><![CDATA[  ]]></p>
+        <p class="compact"><code>customContainerType.setFocussedElement = myCustomContainer_setFocussedElement;</code><![CDATA[  ]]></p>
+        <p class="compact"><code>function myCustomContainer_getFocussedElement(...) { ... }</code><![CDATA[  ]]></p>
+        <p><code>function myCustomContainer_setFocussedElement(...) { ... }</code><![CDATA[  ]]></p>
+        <h3>Active focus change notification</h3>
+        <p>In addition to allowing <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> to get and set the current focus, you must also notify <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> when the focus is set to an edit control, for example via mouse click.</p>
+        <ul>
+            <li>
+                <p><code>function NUSA_customContainerFocussed(containerElement)</code>
+                </p>
+                <p class="compact2">This function must be called whenever the focus is set to one of the edit controls in the container.</p>
+                <p class="compact2">Parameter:</p>
+                <p class="indent3"><code>containerElement</code> - the HTML element tagged with the <code>data-nusa-custom-container-type</code> attribute.</p>
+            </li>
+        </ul>
+        <h3>Custom container with HTML5 content-editable controls (Microsoft Internet Explorer)</h3>
+        <p>If the custom control triggers a control with the HTML5 <code>contenteditable</code> attribute set in the background, the <code>NUSA_cleanupContenEditable(contentEditableElement)</code> function must be called before <a href="DANUBE_SPEECH_ENABLE_BROWSER.htm">initializing speech recognition</a> on your web page. It can be called in your <code>NUSA_configure()</code> function or, for <a href="DANUBE_SPEECH_ENABLE_BROWSER.htm#Deferred">deferred initialization</a>, before calling <code>NUSA_initialize()</code>. If you add a new container dynamically, call the function before the <code>NUSA_reinitializeVuiForm()</code> function.</p>
+        <p>Microsoft Internet Explorer can't provide correct selection information if whitespace characters (enter and indent) are used in the HTML code within the <code>contenteditable</code> controls with preset content. If you use whitespace characters to keep your source code readable, call the <code>NUSA_cleanupContenEditable(contentEditableElement)</code> function to remove superfluous whitespaces.</p>
+    </body>
+</html>

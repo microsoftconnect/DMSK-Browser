@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Concepts">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>
+			Voice commands
+		</title>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1><a name="kanchor48"></a>Voice commands</h1>
+        <p>A voice command is a spoken word or phrase that initiates an action in an app. They enable users to control your app without physically interacting with the app UI. All voice commands that are currently available to an end user are displayed in the personalization &amp; help window. </p>
+        <p class="note"><b>Note:</b> You can speech-enable your app UI even if no speech-enabled controls are active.</p>
+        <p>The following types of voice commands are available:</p>
+        <ul>
+            <li>Standard commands: These are the <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> built-in voice commands and include commands for dictation, navigation, correction, etc. They don't require or allow any handling by your app.</li>
+            <li><a href="DANUBE_APPLICATION_COMMANDS.htm">Application commands</a>: These are voice commands that you define programmatically; they're specific to your app and how you want your users to interact with it.</li>
+        </ul>
+        <p>
+            <table>
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>Command Type</th>
+                        <th>Defined By</th>
+                        <th>Stored In</th>
+                        <th>Handled By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Standard</td>
+                        <td><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>
+                        </td>
+                        <td><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>
+                        </td>
+                        <td><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Application</td>
+                        <td>Your integration<br />(programmatically via the API)</td>
+                        <td>Your integration<br />(no persistent storage in <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>)</td>
+                        <td>Your integration</td>
+                    </tr>
+                </tbody>
+            </table>
+        </p>
+        <h2><a name="Command_precedence"></a>Command priority</h2>
+        <p>When an application command is defined with the same spoken phrase as a standard command, the standard command has priority. The standard command will be applied, not the application command.</p>
+        <h3>Example</h3>
+        <p>You define an application command: <span class="command">open help</span>, to open your app help. The standard command: <span class="command">open help</span>, provided by the <span class="mc-variable DocLoc.DM variable">Dragon Medical</span> system, opens <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>'s speech recognition help instead. Your app won't be notified about the command being recognized.</p>
+        <h2>See also</h2>
+        <p class="compact2"><a href="DANUBE_APPLICATION_COMMANDS.htm">Application commands</a>
+        </p>
+        <p class="indent2"><a href="../Appendix/DANUBE_COMMAND_COMPARISON_HYBRID.htm">Changes to voice commands</a>
+        </p>
+    </body>
+</html>

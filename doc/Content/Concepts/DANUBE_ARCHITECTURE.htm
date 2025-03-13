@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Concepts">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>Dragon Medical SpeechKit architecture
+		</title>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1><a name="kanchor23"></a><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> architecture</h1>
+        <p>&#160;</p>
+        <p>
+            <img src="../Resources/Images/SpeechKit_architecture_hosted.png" class="pageWidth" alt="" />
+        </p>
+        <h2>System components</h2>
+        <ul>
+            <li>
+                <h5><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>
+                </h5>
+                <p>Nuance SDKs to speech-enable your desktop, iOS, Android or browser app.</p>
+            </li>
+            <li>
+                <h5><span class="mc-variable DocLoc.DM_Server variable">Dragon Medical Server</span>
+                </h5>
+                <p>Speech recognition servers.</p>
+            </li>
+            <li>
+                <h5><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> (Browser edition) web server</h5>
+                <p>Hosts the Browser SDK required to speech-enable browser apps.</p>
+            </li>
+            <li>
+                <h5><span class="mc-variable DocLoc.NMC_Full_Short variable">Nuance Management Center (NMC)</span>
+                </h5>
+                <p>A web browser interface for administration of <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> organizations.</p>
+                <p>Administrators use <span class="mc-variable DocLoc.NMC_Short variable">NMC</span> to manage user accounts, sites and groups, define auto-texts, manage the speech-recognition vocabulary, monitor system usage and perform other administration tasks. For more information, see the <i>Dragon Medical SpeechKit Administration Guide</i> available from the <span class="mc-variable DocLoc.DP_Full variable">Nuance Healthcare Development Platform</span>.</p>
+            </li>
+            <li>
+                <h5><span class="mc-variable DocLoc.NMS_Full_Short variable">Nuance Management Server (NMS)</span>
+                </h5>
+                <p>Provides services for the <span class="mc-variable DocLoc.DM variable">Dragon Medical</span> system; for example, user authentication. For <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>, <span class="mc-variable DocLoc.NMS_Short variable">NMS</span> communication is handled by <span class="mc-variable DocLoc.DM_Server variable">Dragon Medical Server</span>; the client app doesn't communicate directly with <span class="mc-variable DocLoc.NMS_Short variable">NMS</span>.</p>
+            </li>
+        </ul>
+        <h2>Network requirements</h2>
+        <p><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> connection to <span class="mc-variable DocLoc.DM_Server variable">Dragon Medical Server</span>: approximately 10 kB/sec upload and download.</p>
+        <h2>On-premises systems</h2>
+        <p>If you are deploying the server-side components on-premises at your own site, see the <i><span class="mc-variable DocLoc.DM_Server variable">Dragon Medical Server</span> Installation Guide</i> delivered with your on-premises package for more information on setting up your system.</p>
+    </body>
+</html>

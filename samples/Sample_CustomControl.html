@@ -1,0 +1,152 @@
+﻿<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Nuance SpeechAnywhere Sample Custom Control</title>
+
+    <link rel="stylesheet" type="text/css" href="css/Demo.css" />
+
+    <!-- Nuance provides the Browser SDK on 3 fixed channels, reflecting the update cycles:
+        Beta, Mainline and Delayed
+        https://speechanywhere.nuancehdp.com/%CHANNEL%/scripts/Nuance.SpeechAnywhere.js
+    -->
+    <!--
+        Beta
+        This is a final verification channel focusing on release candidate builds
+        For integrators who want to verify upcoming version of Browser SDK with their integration
+        Builds are manually selected for release candidate and have high level of QA coverage
+    -->
+    <!--
+        Mainline
+        This channel is the released version
+        For Integrators who want to use the latest released version of SDK with their customers
+    -->
+    <!--
+        Delayed
+        This channel is the previous released version
+        For Integrators who want to / need to switch back after using Mainline channel
+    -->
+
+    <script language="javascript" type="text/javascript" src="https://speechanywhere.nuancehdp.com/Mainline/scripts/Nuance.SpeechAnywhere.js"></script>
+
+    <script language="javascript" type="text/javascript">
+        function NUSA_configure() {
+	        NUSA_userId = "aUser";
+
+	        NUSA_applicationName = "Sample_Custom_Control";
+
+	        //NUSA_enableAll =false;
+            var customType = NUSA_registerCustomControlType("Input_Type");
+            customType.getText = input_getText;
+            customType.getSelectionText = input_getSelectionText;
+            customType.getSelection = input_getSelection;
+            customType.setSelection = input_setSelection;
+            customType.replaceText = input_replaceText;
+            
+            // START - no need to set these values - the used element does not support multiline
+	            // this must match the character the control is using for a newline
+	            //customType.newlineFormat = "\n";
+	            // this must match the character the control is using for a paragraph
+                // if there is no paragraph support, use  two newlines
+	            //customType.paragraphFormat = "\n\n";
+	        // END - no need to set these values - the used element does not support multiline
+
+	        // returns @string - the value of the elmenet
+            function input_getText(element) {
+                if (!element) {
+                    return '';
+                }
+
+                return element.value;
+            }
+
+            // returns @string - the selected text part of the element
+            function input_getSelectionText(element) {
+                var elementValue = input_getText(element);
+
+                if (elementValue) {
+                    var start = 0,
+                        end = elementValue.length;
+
+                    var selection = input_getSelection(element);
+                    start = selection.start;
+                    end = selection.start + selection.length;
+
+                    return elementValue.substring(start, end);
+                }
+
+                return "";
+            }
+
+            // returns @object - the element's selection start and length
+            function input_getSelection(element) {
+                if (!element) {
+                    return {
+                        start: 0,
+                        length: 0
+                    };
+                }
+
+                return {
+                    start:  element.selectionStart,
+                    length: ( element.selectionEnd - element.selectionStart)
+                };
+            }
+
+            // this method replaces a selection in the element, between startPos and startPos + length, with the given text
+            function input_replaceText(element, text, startPos, length) {
+                if (!element) {
+                    return '';
+                }
+
+                if (element.value === '' || 
+                    length === element.value.length && startPos === 0) {
+                    element.value = text;
+                } else {
+                    element.value = element.value.substring(0, startPos) + text + element.value.substring(Number(startPos) + Number(length));
+                }
+
+                return element.value;
+            }
+
+
+            // this method sets a selection range within the given element
+            function input_setSelection(element, start, length) {
+                if (!element) {
+                    return;
+                }
+
+                element.selectionStart = start;
+                element.selectionEnd = Number(start) + Number(length);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="divMain" class="divMain">
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" id="header_holder">
+            <tr>
+                <td nowrap="nowrap" width="100"><img src="images/Nuance-web-logo.gif" width="90" height="64" alt="Nuance" border="0" /></td>
+                <td nowrap="nowrap" valign="bottom" align="left" style="padding:7px;padding-left:10px">
+                    <font size=4><strong>Nuance Healthcare</strong></font><br/>
+                    <font size="2">
+                        <strong>Dragon Medical SpeechKit Browser Edition</strong></font>
+                </td>
+                <td valign="bottom" align="right"><img src="images/tagline.gif" width="300" height="64" alt="The experience speaks for itself" border="0" /></td>
+            </tr>
+        </table>
+        <br />
+        <div>
+            <label for="1">The first custom control:</label><br/>
+            <input type="unknown" id="1" data-nusa-custom-control-type="Input_Type" data-nusa-marker-container="firstLogo" style="width:95%"/><img id="firstLogo"/>
+            <p />
+            <label for="2">The second custom control:</label><br/>
+            <input type="unknown" id="2" data-nusa-custom-control-type="Input_Type" data-nusa-marker-container="secondLogo" style="width:95%"/><img id="secondLogo"/>
+        </div>
+
+        <span class="classCopyright">"Copyright 2011-2024 Nuance Communications, Inc. All rights reserved." </span>
+    </div>
+</body>
+</html>

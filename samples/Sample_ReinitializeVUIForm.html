@@ -1,0 +1,104 @@
+﻿<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Dragon Medical SpeechKit Browser Edition Sample ReinitializeVUIForm</title>
+    <link rel="stylesheet" type="text/css" href="css/Demo.css" />
+
+    <!-- Nuance provides the Browser SDK on 3 fixed channels, reflecting the update cycles:
+        Beta, Mainline and Delayed
+        https://speechanywhere.nuancehdp.com/%CHANNEL%/scripts/Nuance.SpeechAnywhere.js
+    -->
+    <!--
+        Beta
+        This is a final verification channel focusing on release candidate builds
+        For integrators who want to verify upcoming version of Browser SDK with their integration
+        Builds are manually selected for release candidate and have high level of QA coverage
+    -->
+    <!--
+        Mainline
+        This channel is the released version
+        For Integrators who want to use the latest released version of SDK with their customers
+    -->
+    <!--
+        Delayed
+        This channel is the previous released version
+        For Integrators who want to / need to switch back after using Mainline channel
+    -->
+
+    <script language="javascript" type="text/javascript" src="https://speechanywhere.nuancehdp.com/Mainline/scripts/Nuance.SpeechAnywhere.js"></script>
+
+	<script language="javascript" type="text/javascript">
+	    function NUSA_configure() {
+
+	        NUSA_userId = "aUser";
+	           
+	        NUSA_applicationName = "Sample_ReinitializeVUIForm";
+
+      }
+	    function onBtAddField() {
+            var newRow = document.createElement("tr");
+            var firstCol = document.createElement("TD");
+            var secondCol = document.createElement("TD");
+            firstCol.setAttribute("class", "tdHeader"); 
+            secondCol.innerHTML = "<textarea class='areaNotes'></textarea>";
+            newRow.appendChild(firstCol);
+            newRow.appendChild(secondCol);
+            document.getElementById("noteTable").insertBefore(newRow, document.getElementById("addBefore"));
+
+	        NUSA_reinitializeVuiForm();
+	    }
+	</script>	   
+
+</head>
+<body>
+    <div>
+  
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" id="header_holder">
+            <tr>
+                <td nowrap="nowrap" width="100"><img src="images/Nuance-web-logo.gif" width="90" height="64" alt="Nuance" border="0"/></td>
+                <td nowrap="nowrap" valign="bottom" align="left" style="padding:7px;padding-left:10px">
+                    <font size=4><strong>Nuance Healthcare</strong></font><br/>
+                    <font size="2"><strong>Dragon Medical SpeechKit Browser Edition</strong></font></td>
+                <td valign="bottom" align="right"><img src="images/tagline.gif" width="300" height="64" alt="The experience speaks for itself" border="0"/></td>
+            </tr>
+        </table>
+
+        
+        <div id="divMain" class="divMain">            
+            <hr  style="clear:left"/>
+            <h1>Report</h1>
+            <p></p>
+            <table style="width: 100%;">
+              <tbody id="noteTable">
+                <tr>
+                    <td class="tdHeader">Procedure:</td>
+                    <td><input type="text" class="tdInput" data-nusa-concept-name="procedure"/></td>
+                </tr>
+                <tr>
+                    <td class="tdHeader">Clinical Findings:</td>
+                    <td><textarea class="areaNotes" data-nusa-concept-name="clinical findings"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="tdHeader">Findings:</td>
+                    <td><textarea class="areaNotes" data-nusa-concept-name="findings"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="tdHeader">Impression:</td>
+                    <td><textarea class="areaNotes" data-nusa-concept-name="impression"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="tdHeader">Plan:</td>
+                    <td><textarea class="areaNotes" data-nusa-concept-name="plan"></textarea></td>
+                </tr>
+                <tr id="addBefore">
+                    <td><input id="btAddField" type="button" value="Add field" onclick="onBtAddField()"/></td>
+                </tr>
+              </tbody>
+            </table>
+            
+        </div>
+        <span class="classCopyright">"Copyright 2011-2024 Nuance Communications, Inc. All rights reserved." </span>
+        </div>
+</body>
+</html>

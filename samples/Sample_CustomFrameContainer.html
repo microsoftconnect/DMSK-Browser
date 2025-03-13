@@ -1,0 +1,171 @@
+﻿<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Dragon Medical SpeechKit Browser Edition Sample Custom Frame Container</title>
+
+    <!-- Nuance provides the Browser SDK on 3 fixed channels, reflecting the update cycles:
+        Beta, Mainline and Delayed
+        https://speechanywhere.nuancehdp.com/%CHANNEL%/scripts/Nuance.SpeechAnywhere.js
+    -->
+    <!--
+        Beta
+        This is a final verification channel focusing on release candidate builds
+        For integrators who want to verify upcoming version of Browser SDK with their integration
+        Builds are manually selected for release candidate and have high level of QA coverage
+    -->
+    <!--
+        Mainline
+        This channel is the released version
+        For Integrators who want to use the latest released version of SDK with their customers
+    -->
+    <!--
+        Delayed
+        This channel is the previous released version
+        For Integrators who want to / need to switch back after using Mainline channel
+    -->
+
+    <script language="javascript" type="text/javascript" src="https://speechanywhere.nuancehdp.com/Mainline/scripts/Nuance.SpeechAnywhere.js"></script>
+
+    <script language="javascript" type="text/javascript">
+
+		var lastFocussedFrameElement=null;
+
+		function NUSA_configure() {
+			NUSA_userId = "aUser";
+			NUSA_applicationName = "Sample_Custom_Frame_Container";
+            
+			var customContainerType = NUSA_registerCustomContainerType("Frame_Type");
+			customContainerType.getFocussedElement = frame_getFocussedElement;
+			customContainerType.setFocussedElement = frame_setFocussedElement;
+
+			var customControlType = NUSA_registerCustomControlType("Control_Type");
+			// this must match the character the control is using for a newline
+			customControlType.newlineFormat = "\n";
+			// this must match the character the control is using for a paragraph
+			// if there is no paragraph support, use  two newlines
+			// note that for the demonstration an internal implementation of a contentEditable element is used
+			// and that the paragraphFormat in this case is a proprietary value of this *implementation*,
+			// not valid for contentEditable elements in general
+			customControlType.paragraphFormat = "\f";
+
+			customControlType.replaceText = frame_replaceText;
+			customControlType.getText = frame_getText;
+			customControlType.getSelectionText = frame_getSelectionText;
+			customControlType.getSelection = frame_getSelection;
+			customControlType.setSelection = frame_setSelection;
+
+			NUSA_cleanupContenEditable(getframeElementId("frameEdit3")); // cleanup the CE
+
+		}
+
+		function frameFocus(element) {
+			var  placeholder = getPlaceholderElement(element.id);
+			// check if this is a speech enabled element
+			if (placeholder){
+				var cctAttribute = placeholder.getAttribute("data-nusa-custom-control-type");
+				if (cctAttribute==="Control_Type") // the registered type
+					lastFocussedFrameElement = element;
+			}
+
+			// there is no speech enabled element active yet
+			if (!lastFocussedFrameElement)
+				return;
+
+			var container = document.getElementById("frameId");
+			// // there is already a speech enabled element active inside the container, inform SaS about it
+			NUSA_customContainerFocussed(container);
+		}
+		// this is only to avoid id confusion;
+		// for each edit control in the frame document, we added a placeholder <div> below
+		function getPlaceholderElement(frameElementId) {
+			var phElementId;
+			if (frameElementId == "edit1")
+				phElementId = "frameEdit1";
+			else if (frameElementId == "edit2")
+				phElementId = "frameEdit2";
+			else if (frameElementId == "edit3")
+				phElementId = "frameEdit3";
+			else
+				throw ("Something is wrong");
+			return document.getElementById(phElementId);
+		}
+		function getframeElementId(placeholderId) {
+			if (placeholderId == "frameEdit1")
+				return "edit1";
+			if (placeholderId == "frameEdit2")
+				return "edit2";
+			if (placeholderId == "frameEdit3")
+				return "edit3";
+
+			throw ("Something is wrong");
+		}
+
+		function getFrameElement(element) {
+			var container = document.getElementById("frameId");
+			return container.contentWindow.document.getElementById(getframeElementId(element.id));
+		}
+
+		/// Frame_Type /////////////////////////////////////
+		////////////////////////////////////////////////////
+		function frame_getFocussedElement(container) {
+			// we only have one container
+			return lastFocussedFrameElement ? getPlaceholderElement(lastFocussedFrameElement.id) : null;
+		}
+		function frame_setFocussedElement(element) {
+			var frameElement = getFrameElement(element);
+			frameElement.focus();
+			// for some controls it may be necessary to move the caret to the end
+			/*
+            if (frameElement.id==="edit3") {
+                var text = frame_getText(element);
+                frame_setSelection(element, text.length, 0);
+            }
+            */
+		}
+		function frame_getText(element) {
+			var customElement = getFrameElement(element);
+			return NUSA_getText(customElement);
+		}
+		function frame_getSelectionText(element) {
+			var customElement = getFrameElement(element);
+			return NUSA_getSelectionText(customElement);
+		}
+		function frame_replaceText(element, text, fromPos, length) {
+			var customElement = getFrameElement(element);
+			return NUSA_replaceText(customElement, text, fromPos, length);
+		}
+		function frame_getSelection(element) {
+			var customElement = getFrameElement(element);
+			return NUSA_getSelection(customElement);
+		}
+		function frame_setSelection(element, start, length) {
+			var customElement = getFrameElement(element);
+			NUSA_setSelection(customElement, start, length);
+		}
+    </script>
+</head>
+<body>
+<div id="divMain" class="divMain">
+    <div id ="Div1" style="border:1px solid black"></div>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" id="header_holder">
+        <tr>
+            <td nowrap="nowrap" width="100"><img src="images/Nuance-web-logo.gif" width="90" height="64" alt="Nuance" border="0"/></td>
+            <td nowrap="nowrap" valign="bottom" align="left" style="padding:7px;padding-left:10px">
+                <font size=4><strong>Nuance Healthcare</strong></font><br/>
+                <font size="2"><strong>Dragon Medical SpeechKit Browser Edition</strong></font></td>
+            <td valign="bottom" align="right"><img src="images/tagline.gif" width="300" height="64" alt="The experience speaks for itself" border="0"/></td>
+        </tr>
+    </table>
+
+    <p />
+
+    <iframe  id="frameId" data-nusa-custom-container-type="Frame_Type" src="Sample_CustomFrame.html" width="80%" height="400px"></iframe>
+    <div id="frameEdit1" data-nusa-custom-container-id="frameId" data-nusa-custom-control-type="Control_Type"></div>
+    <div id="frameEdit2" data-nusa-custom-container-id="frameId" data-nusa-custom-control-type="Control_Type"></div>
+    <div id="frameEdit3" data-nusa-custom-container-id="frameId" data-nusa-custom-control-type="Control_Type"></div>
+
+    <span class="classCopyright">"Copyright 2011-2024 Nuance Communications, Inc. All rights reserved." </span>
+</div>
+</body>
+</html>

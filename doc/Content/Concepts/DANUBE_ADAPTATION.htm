@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Good Integration Practice">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>User profile adaptation</title>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1><a name="kanchor45"></a>User profile adaptation</h1>
+        <p>The speech recognition profile of a <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> user is continuously adapted to the user's way of speaking. The system learns by comparing the text created by <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> to the final text after it has been corrected by the user. This is a statistical and heuristic process that significantly reduces the number of recognition errors over time.</p>
+        <p>For adaptation to work efficiently, it's essential that the system is provided with corrected text. To ensure this, follow the guidelines for API integration and communicate the end user guidelines to your users.</p>
+        <p data-mc-conditions="Danube.Browser,Danube.Desktop"><b>Note:</b> In the <a href="../DeferredCorrection/DANUBE_CONCEPT_DEFERRED_CORRECTION.htm">deferred correction</a> workflow, corrections made by correctionists aren't used to adapt the author's user profile.</p>
+        <h3>Guidelines for API integration</h3>
+        <p>Don't reuse a VuiController instance for multiple app documents or forms; always close it when a document or form is closed (saved or signed off) in the app.</p>
+        <p>Don't close a VuiController when it must be assumed that misrecognized words in the text haven't been corrected yet. For example, when a user switches to a different view or window and is expected to return to finalize the document or form, keep the GUI objects and related VuiController in memory and hide them from view.</p>
+        <h3>Guidelines for end users</h3>
+        <p>Always correct misrecognized words. The system learns from your corrections, which means that corrected errors will appear less likely in the future. The system will assume that any misrecognized words you left in were recognized correctly, and these errors will continue to appear.</p>
+    </body>
+</html>

@@ -1,0 +1,321 @@
+﻿<!doctype html>
+<html xml:lang="en">
+
+<head>
+    <title>Dragon Medical SpeechKit Browser Edition Sample Deferred Correction</title>
+
+    <link rel="stylesheet" type="text/css" href="css/Demo.css" />
+
+    <!-- Nuance provides the Browser SDK on 3 fixed channels, reflecting the update cycles:
+        Beta, Mainline and Delayed
+        https://speechanywhere.nuancehdp.com/%CHANNEL%/scripts/Nuance.SpeechAnywhere.playback.%REGION%.js
+    -->
+    <!--
+        Beta
+        This is a final verification channel focusing on release candidate builds
+        For integrators who want to verify upcoming version of Browser SDK with their integration
+        Builds are manually selected for release candidate and have high level of QA coverage
+    -->
+    <!--
+        Mainline
+        This channel is the released version
+        For Integrators who want to use the latest released version of SDK with their customers
+    -->
+    <!--
+        Delayed
+        This channel is the previous released version
+        For Integrators who want to / need to switch back after using Mainline channel
+    -->
+
+    <!-- %REGION% must be replaced with a region code that supports Deferred Correction -->
+    <script language="javascript" type="text/javascript"
+        src="https://speechanywhere.nuancehdp.com/mainline/scripts/Nuance.SpeechAnywhere.playback.%REGION%.js"></script>
+
+    <script type="text/javascript">
+        /**
+         * Set the document mode
+         */
+        function login() {
+            if (document.getElementById("txtUsername").validity.valid) {
+                document.getElementById("divMain").style.display = "block";
+                document.getElementById("formLogin").style.display = "none";
+                document.getElementById("username").innerText = document.getElementById("txtUsername").value;
+                document.getElementById("documentMode").innerText = document.getElementById("optDocumentMode").value;
+
+                const optDocumentMode = document.getElementById("optDocumentMode").value;
+                if (optDocumentMode === "author") {
+                    NUSA_documentMode = NUSA_mode.author;
+                } else {
+                    NUSA_documentMode = NUSA_mode.correctionist;
+                }
+            }
+        }
+
+        let logoutTimeoutId = null;
+
+        function clearCloseTimeout() {
+            if (logoutTimeoutId !== null) {
+                clearTimeout(logoutTimeoutId);
+                logoutTimeoutId = null;
+            }
+        }
+
+        function onVuiFormClosed() {
+            clearCloseTimeout();
+            window.location.reload();
+        }
+
+        function logout() {
+            document.getElementById("btnLogout").innerText = "Logging out...";
+            // This throws an exception if trying to close before initializing the SDK
+            try {
+                if (NUSA_closeVuiForm(onVuiFormClosed)) {
+                    // Give time to finish the close vuiform request made above
+                    logoutTimeoutId = setTimeout(() => {
+                        clearCloseTimeout();
+                        window.location.reload();
+                    }, 5000);
+                } else {
+                    // We can exit early as the VUI form has already been closed.
+                    window.location.reload();
+                }
+            } catch {
+                clearCloseTimeout();
+                window.location.reload();
+            }
+        }
+
+        var initialized = false;
+
+        /**
+         * Initialize SDK
+         */
+        function initializeBrowserSDK() {
+            NUSA_userId = document.getElementById("txtUsername").value;
+            NUSA_applicationName = "Sample_DeferredCorrection";
+            NUSA_language = "en-gb";
+
+            const documentId = document.getElementById("txtDocumentID").value;
+            const documentToken = document.getElementById("txtDocumentToken").value;
+            NUSA_initialize(null, { id: documentId, token: documentToken });
+        }
+
+        /**
+         * Generate a new GUID for document ID
+         */
+        function onNewId() {
+            const newId = window.crypto.randomUUID();
+            const txtDocumentID = document.getElementById("txtDocumentID");
+            txtDocumentID.value = newId;
+        }
+
+        /**
+         * Generate a new document token
+         */
+        function onNewToken() {
+            // Document tokens are supposed to be generated in the server.
+            // Below code is not recommended for production usage and used for demonstration purposes only
+            const randomValues = new Uint8Array(32);
+            window.crypto.getRandomValues(randomValues);
+            const documentToken = window.btoa(String.fromCharCode(...randomValues))
+            const txtDocumentToken = document.getElementById("txtDocumentToken");
+            txtDocumentToken.value = documentToken;
+        }
+
+        /**
+         * Clean up session cookies and initialize browser SDK
+         */
+        function onOpen() {
+            if (!initialized) {
+                initializeBrowserSDK();
+                initialized = true;
+            } else {
+                // Sample page doesn't really use this
+                // This is to demonstrate how to pass document ID and document token to NUSA_initializeVuiForm
+                NUSA_initializeVuiForm({
+                    id: document.getElementById("txtDocumentID").value,
+                    token: document.getElementById("txtDocumentToken").value
+                });
+            }
+            document.getElementById("openVuiForm").setAttribute("disabled", "");
+            document.getElementById("closeVuiForm").removeAttribute("disabled");
+        }
+
+        /**
+         * Close the VuiForm
+         */
+        function onClose() {
+            NUSA_closeVuiForm();
+            document.getElementById("openVuiForm").removeAttribute("disabled");
+            document.getElementById("closeVuiForm").setAttribute("disabled", "");
+        }
+
+        function getAudioLength() {
+            document.getElementById("audioLength").innerText = NUSA_getAudioLength() + "ms";
+        }
+
+        // Register to the Playback started event
+        window.NUSA_onPlayingStarted = () => {
+            document.getElementById("playbackState").innerText = "PlaybackStarted";
+        };
+
+        // Register to the Playback stopped event
+        window.NUSA_onPlayingStopped = () => {
+            document.getElementById("playbackState").innerText = "PlaybackStopped";
+        };
+
+        /**
+         * Save document details to browser session storage
+         */
+        function saveDocument() {
+            const txtDocumentID = document.getElementById("txtDocumentID");
+            const txtDocumentToken = document.getElementById("txtDocumentToken");
+            const txtProcedure = document.getElementById("txtProcedure");
+            const txtClinicalFindings = document.getElementById("txtClinicalFindings");
+            const txtFindings = document.getElementById("txtFindings");
+
+            window.sessionStorage.setItem("txtDocumentID", txtDocumentID.value);
+            window.sessionStorage.setItem("txtDocumentToken", txtDocumentToken.value);
+            window.sessionStorage.setItem("txtProcedure", txtProcedure.value);
+            window.sessionStorage.setItem("txtClinicalFindings", txtClinicalFindings.value);
+            window.sessionStorage.setItem("txtFindings", txtFindings.innerHTML);
+        }
+
+        /**
+         * Load document details from browser session storage
+         */
+        function loadDocument() {
+            const txtDocumentID = document.getElementById("txtDocumentID");
+            const txtDocumentToken = document.getElementById("txtDocumentToken");
+            const txtProcedure = document.getElementById("txtProcedure");
+            const txtClinicalFindings = document.getElementById("txtClinicalFindings");
+            const txtFindings = document.getElementById("txtFindings");
+
+            const documentId = window.sessionStorage.getItem("txtDocumentID");
+            const documentToken = window.sessionStorage.getItem("txtDocumentToken");
+            const procedure = window.sessionStorage.getItem("txtProcedure");
+            const clinicalFindings = window.sessionStorage.getItem("txtClinicalFindings");
+            const findings = window.sessionStorage.getItem("txtFindings");
+
+            txtDocumentID.value = documentId;
+            txtDocumentToken.value = documentToken;
+            txtProcedure.value = procedure;
+            txtClinicalFindings.value = clinicalFindings;
+            txtFindings.innerHTML = findings;
+        }
+
+        /**
+         * Toggle embed/floating of the Speech Bar
+         */
+        function onEmbedSpeechBar() {
+            // Toggle embedded/floating mode by passing either the container or null
+            NUSA_embedSpeechBar(document.getElementById("embedSpeechBar").checked ? document.getElementById("speechBarContainer") : null);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="header_holder" style="display: flex">
+        <div nowrap="nowrap" style="width: 100px"><img src="images/Nuance-web-logo.gif" width="90" height="64"
+                alt="Nuance" border="0" /></div>
+        <div style="padding: 7px; padding-left: 10px; align-self: end;">
+            <span style="font-size: 18px"><strong>Nuance Healthcare</strong></span><br />
+            <span style="font-size: 13px"><strong>Dragon Medical SpeechKit Browser Edition</strong></span>
+        </div>
+        <div style="margin-left: auto"><img src="images/tagline.gif" width="300" height="64"
+                alt="The experience speaks for itself" border="0" /></div>
+    </div>
+    <form id="formLogin" class="test">
+        <label for="txtUsername">Login as:</label>
+        <input type="text" id="txtUsername" name="txtUsername" data-nusa-enabled="false" placeholder="Username"
+            required>
+        <br />
+        <br />
+        <select id="optDocumentMode" name="optDocumentMode">
+            <option value="author">Author</option>
+            <option value="correctionist">Correctionist</option>
+        </select>
+        <br />
+        <br />
+        <button id="btnLogin" onclick="login()">Login</button>
+    </form>
+    <div id="divMain" class="divMain" style="display: none">
+        <div class="test" style="display: flex;">
+            <span id="username"></span>: <span id="documentMode"></span>
+            <button id="btnLogout" onclick="logout()">Logout</button>
+        </div>
+        <div class="test mode">
+            <button title="Loads the last saved document's details." onclick="loadDocument()">Load Previous Data</button>
+            <button title="Stores the current document's details to make it easier to swap users." onclick="saveDocument()">Store Data</button>
+        </div>
+        <br />
+        <div>
+            <button onclick="getAudioLength()">Get Audio Length</button>
+            <span id="audioLength"></span>
+            <span style="float: right">
+                <label>Playback State: </label>
+                <span id="playbackState"></span>
+            </span>
+        </div>
+        <br />
+        <hr />
+        <label for="txtDocumentID" class="tdHeader">Document ID:</label>
+        <input type="text" id="txtDocumentID" name="txtDocumentID" data-nusa-enabled="false">
+        <button onclick="onNewId()">New ID</button>
+        <br />
+        <label for="txtDocumentToken" class="tdHeader">Document Token:</label>
+        <input type="text" id="txtDocumentToken" name="txtDocumentToken" data-nusa-enabled="false">
+        <button onclick="onNewToken()">New Token</button>
+        <br />
+        <br />
+        <button id="openVuiForm" onclick="onOpen()">Open</button>
+        <button id="closeVuiForm" onclick="onClose()" disabled>Save & Close</button>
+        <hr style="clear:left" />
+        <h1>Report</h1>
+        <hr />
+        <input id="embedSpeechBar" type="checkbox" value="Embed speechBar" onclick="onEmbedSpeechBar()" />
+        <label for="embedSpeechBar">Embed speechBar</label>
+        <div id="speechBarContainer"></div>
+        <hr />
+        <table style="width: 100%" aria-hidden="true">
+            <tbody>
+                <tr>
+                    <td class="tdHeader">Procedure:</td>
+                    <td>
+                        <input class="tdInput" title="procedure (input)" type="text" id="txtProcedure"
+                            data-nusa-document-field-id="txtProcedure" data-nusa-concept-name="txtProcedure">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdHeader">Clinical Findings:</td>
+                    <td>
+                        <textarea class="areaNotes" title="clinicalFindings (textarea)" id="txtClinicalFindings"
+                            data-nusa-document-field-id="txtClinicalFindings"
+                            data-nusa-concept-name="txtClinicalFindings"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdHeader">Findings:</td>
+                    <td>
+                        <div class="areaNotes" title="findings (contenteditable)" id="txtFindings"
+                            data-nusa-document-field-id="txtFindings" data-nusa-concept-name="txtFindings"
+                            contenteditable="true" style="border: 1px solid black;"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <span class="classCopyright">"Copyright <span id="copyrightYear"></span> Nuance Communications, Inc. All rights
+        reserved." </span>
+</body>
+<script type="text/javascript">
+    document.getElementById("copyrightYear").innerText = new Date().getFullYear();
+
+    const form = document.getElementById("formLogin");
+    form.onsubmit = (e) => {
+        e.preventDefault();
+    };
+</script>
+
+</html>

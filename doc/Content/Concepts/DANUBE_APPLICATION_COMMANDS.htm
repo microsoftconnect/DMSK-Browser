@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Concepts">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>
+			Application commands
+		</title>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1><a name="kanchor10"></a>Application commands</h1>
+        <p>You can define <a href="DANUBE_VOICE_COMMANDS.htm">voice commands</a> for your users. These application commands are specific to your app and how you want your users to interact with it.</p>
+        <p>Application commands can be used to:</p>
+        <ul>
+            <li>Control GUI elements: For example, the user says <span class="command">save report</span> instead of selecting the <b>Save</b> button.</li>
+            <li>Control workflows: For example, the user says <span class="command">show my last 5 reports for mister Brown</span> instead of browsing through lists.</li>
+        </ul>
+        <h2>Application command sets</h2>
+        <p>Each application command is associated with a command set. Application commands in the same set are displayed in the same section of the personalization &amp; help <MadCap:conditionalText data-mc-conditions="Danube.Browser,Danube.COM,Danube.Desktop">window</MadCap:conditionalText>. Command sets can be enabled or disabled; if you disable a command set, all application commands in the set become inactive and they're no longer recognized until enabled again. You can use command sets to group related application commands together in order to enable and disable them depending on what the end user currently sees on the app UI or which app workflows are available to them.</p>
+        <h2>Using application commands</h2>
+        <p>Any active application command can be used by the end user whenever recording is on. Your app is notified via an event when an application command is recognized.</p>
+        <p>If no text controls are speech-enabled but application commands have been defined, the speech bar is always displayed and the user can start recording at any time.</p>
+        <h2>Phrases and display strings</h2>
+        <p>Application commands are defined by providing an application command phrase. Phrases describe what the end user needs to say in order to trigger a command event in your app. Phrases should always reflect the pronunciation of an application command; to display the actual phrase to the end user, you can use the display string. You can define more than one phrase: a main phrase and alternatives. The phrase should be intuitive for the user. For example, the main phrase <b>save report</b> has an alternative <b>click save</b>.</p>
+        <p>When you define an application command, <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> generates a phonetic transcription of the phrase. In some cases, how a phrase is written and how it's pronounced are very different. In this case, you can define a display string to be used <MadCap:conditionalText data-mc-conditions="Danube.Browser,Danube.COM,Danube.Desktop">in the personalization &amp; help window</MadCap:conditionalText> and the phrase provides pronunciation data. For example, the personalization &amp; help <MadCap:conditionalText data-mc-conditions="Danube.Browser,Danube.COM,Danube.Desktop">window</MadCap:conditionalText> displays <b>Worcester</b> (the display string) and the user says <span class="command">wooster</span> (the phrase). </p>
+        <p>You can define a display string for the main phrase and different display strings for all alternative phrases. If you define a display string for a phrase that's identical to the display string for another phrase, it will only be displayed once <MadCap:conditionalText data-mc-conditions="Danube.Browser,Danube.COM,Danube.Desktop">in the personalization &amp; help window</MadCap:conditionalText>.</p>
+        <p>Only alphabetic characters can be used in phrases; special characters aren't allowed.</p>
+        <h3>Examples</h3>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>How it's pronounced<br />(phrase)</th>
+                    <th>
+                        <p>How it's written<br />(display string)</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>coo detah</td>
+                    <td>coup d'etat</td>
+                </tr>
+                <tr>
+                    <td>wooster</td>
+                    <td>Worcester</td>
+                </tr>
+                <tr>
+                    <td>nazdack</td>
+                    <td>NASDAQ</td>
+                </tr>
+                <tr>
+                    <td>megabyte</td>
+                    <td>
+                        <p>MB</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>C four</td>
+                    <td>C4</td>
+                </tr>
+                <tr>
+                    <td>U S A<br />united states of America</td>
+                    <td>USA</td>
+                </tr>
+                <tr>
+                    <td>income slash expenditure</td>
+                    <td>income/expenditure</td>
+                </tr>
+                <tr>
+                    <td>Doctor</td>
+                    <td>Dr.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><a name="Recommen"></a>Recommendations</h2>
+        <ul>
+            <li>We recommend using a distinctive phrase so that it can't be misinterpreted as speech to be recognized. This helps to ensure that it's correctly executed. If commands are still recognized as speech too often, consider using a unique prefix for all commands (such as the name of your app).</li>
+            <li>
+                <p>Define commands that encourage the user to speak naturally.</p>
+                <p>For example, you want to define a command that opens the ROS tab in your app and places the cursor in a text field ready for dictation. Use 'document R O S', 'dictate R O S' and 'write R O S' rather than 'select the R O S tab'.</p>
+            </li>
+            <li>Use simple phrases that are intuitive and easy to pronounce.</li>
+            <li>Don't implement application commands that the <span class="mc-variable DocLoc.DM variable">Dragon Medical</span> system already provides as standard voice commands. When this happens, the standard command has <a href="DANUBE_VOICE_COMMANDS.htm#Command_precedence">priority</a>.</li>
+            <li>For acronyms that are spelled out, use capital letters separated by spaces.</li>
+            <li>
+                <p>When you define the spoken phrase, don't use:</p>
+                <p class="indent2">Very short phrases (such as one syllable only); this can cause the command to be recognized when the user didn't intend it.</p>
+                <p class="indent2">Capital letters; for example, use 'assessment and plan', not 'ASSESSMENT AND PLAN'. Exception: For acronyms, use capital letters separated by spaces; for example, C I A.</p>
+                <p class="indent2">Abbreviations; for example, 'Dr.'</p>
+                <p class="indent2">Digits; use 'twelve' and not '12'.</p>
+                <p class="indent2">Punctuation marks; for example, ", !, ?, etc.</p>
+                <p class="indent2">Symbols; for example, +, -, &amp;, $, etc.</p>
+            </li>
+        </ul>
+        <h2>Placeholders</h2>
+        <p>Application commands can include placeholders in the phrase. The actual values for the placeholders need to be added by your app programmatically. Placeholders are displayed <MadCap:conditionalText data-mc-conditions="Danube.Browser,Danube.COM,Danube.Desktop">in the personalization &amp; help window</MadCap:conditionalText> as a single word in angled brackets; the displayed string can be different from the placeholder ID used in the command phrase. </p>
+        <p class="note"><b>Note:</b> It's not possible to use the same placeholder more than once in a voice command.</p>
+        <p>The following types of placeholder can be used:</p>
+        <ul>
+            <li>Standard placeholders delivered with <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span>: These are prefixed with <code>standard</code>; for example, <code>show lab results from &lt;standard:date&gt;</code>.</li>
+            <li>App-defined placeholders: For example, you define the placeholder <code>&lt;patient&gt;</code> with the values <code>"Mr. Pink", "Mr. Orange", "Mr. Blue", "Mr. Purple", "Mr. Green"</code>; the values are dynamically set at runtime. The user sees the application command <b>show lab results for &lt;patient&gt;</b> <MadCap:conditionalText data-mc-conditions="Danube.Browser,Danube.COM,Danube.Desktop">in the personalization &amp; help window</MadCap:conditionalText> and says <span class="command">show lab results for mister pink</span>.</li>
+        </ul>
+        <p>The app will be informed about the values for all placeholders used within a command via the command’s event.</p>
+        <p class="warning"><span class="important">Important:</span> If the placeholder included in an application command is undefined or contains invalid characters (for example, angled brackets), the application command won't be recognized. Make sure to test application commands that include placeholders in all relevant use cases.</p>
+        <h3><a name="StandardPlaceholders"></a>Standard placeholders</h3>
+        <p>The following standard placeholders are available:</p>
+        <table>
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Standard placeholder</th>
+                    <th>Description</th>
+                    <th>Key</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>&lt;standard:cardinal0-100&gt;</code>
+                    </td>
+                    <td>The user can say a cardinal number from 0 to 100; for example, <span class="command">forty two</span>. 
+The placeholder value returned in the command event will be the corresponding cardinal number <code>42</code>.
+</td>
+                    <td><code>standard_cardinal0-100</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>&lt;standard:ordinal1-12&gt;</code>
+                    </td>
+                    <td>The user can say an ordinal number from 1 to 12; for example, <span class="command">sixth</span>. 
+The placeholder value returned in the command event will be the corresponding cardinal number <code>6</code>.
+</td>
+                    <td><code>standard_ordinal1-12</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>&lt;standard:date&gt;</code>
+                    </td>
+                    <td>The user must say the month and the day, saying the year is optional. If the year isn't specified, the closest year from the current date will be used (going forwards/backwards 6 months). The placeholder value returned in the command event will be the string YYYY-MM-DD.
+</td>
+                    <td><code>standard_date</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>See also</h3>
+        <p class="indent2" data-mc-conditions="Danube.Browser"><a href="../BrowserUseCases/DANUBE_APPLICATION_COMMANDS_BROWSER.htm">Application commands</a> (use case)</p>
+    </body>
+</html>

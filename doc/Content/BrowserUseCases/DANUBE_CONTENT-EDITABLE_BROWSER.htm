@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="Default.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-toc-path="Use Cases" data-mc-condition-tag-expression="include[Danube.Browser], exclude[Danube.Android or Danube.iOS]">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" /><title>Using HTML5 content-editable elements</title>
+        <link href="../Resources/Stylesheets/DocLoc.css" rel="stylesheet" type="text/css" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+    </head>
+    <body>
+        <h1><a name="kanchor5"></a>Using HTML5 content-editable elements</h1>
+        <p>You can speech-enable <code>&lt;div&gt;</code> elements by adding the HTML5 <code>contenteditable</code> attribute.</p>
+        <p>Because the mapping of GUI text and selection points to HTML code is ambiguous, <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> needs to remove sources of ambiguity to ensure that recognized text isn't inserted in an unexpected location.</p>
+        <p>During the initialization of speech-enabled edit controls, when you call <code>NUSA_initialize()</code>, <code>NUSA_initializeVuiForm()</code> or <code>NUSA_reinitializeVuiForm()</code>, the HTML content of <code>contenteditable</code> elements is normalized as follows:</p>
+        <ul>
+            <li>All comments are removed from the HTML content.</li>
+            <li>All whitespace that's not displayed on the control's GUI is removed from the HTML content.</li>
+            <li>Empty paragraphs (that the user can't see or navigate to) are removed.</li>
+        </ul>
+        <h3><a name="kanchor6"></a>HTML element handling in a content-editable div</h3>
+        <p>When speech-enabling a content-editable div, <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> interprets the HTML content as a sequence of plain text.</p>
+        <p>The following HTML elements have limited support when they occur in this text:</p>
+        <ul>
+            <li><code>&lt;br&gt;</code>
+            </li>
+            <li><code>&lt;p&gt;</code>
+            </li>
+            <li><code>&lt;div&gt;</code>
+            </li>
+            <li><code>&lt;h1-6&gt;</code>
+            </li>
+            <li><code>&lt;span&gt;</code>
+            </li>
+            <li><code>&lt;img&gt;</code>
+            </li>
+            <li>Inline text-formatting elements such as <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;strong&gt;</code></li>
+        </ul>
+        <p>These elements don't prevent speech recognition functionality, but when the user deletes or overwrites text within the content-editable div, these elements can also be deleted/overwritten along with any style attributes applied to them. When this occurs, voice commands such as <span class="command">undo that</span> can restore deleted text but can't restore deleted HTML elements (except for <code>&lt;p&gt;</code> and <code>&lt;br&gt;</code> elements).</p>
+        <p>Using any HTML elements not listed above causes incorrect word and selection detection and makes the content-editable div unusable for speech recognition.</p>
+        <h3><a name="kanchor7"></a>Paragraph structure in a content-editable div</h3>
+        <p><span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> inserts recognition results into a <code>&lt;p&gt;</code> element. When the user says <span class="command">new paragraph</span>, a new <code>&lt;p&gt;</code> element is created and the text cursor is moved into it.</p>
+        <p>Programmatically adding text or HTML elements between paragraphs isn't supported; this causes incorrect word and selection detection and makes the content-editable div unusable for speech recognition.</p>
+        <h3>Cursor position in a content-editable div</h3>
+        <p>When the user places the focus in a content-editable div (for example, by pressing the tab key or saying navigation commands), <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> doesn't interfere with the browser's default handling of setting the selection. Exception:&#160;When the div is focused for the first time, the cursor is placed at the end of the text.</p>
+        <p>The browser default can vary but the cursor is often placed at the start of the control rather than the end. To override the browser's default handling and place the text cursor at the end of the text, <MadCap:conditionalText data-mc-conditions="Danube.Browser">do the following:</MadCap:conditionalText></p>
+        <ul data-mc-conditions="Danube.Browser">
+            <li>
+                <p>In the <code>NUSA_configure</code> function, set <code>NUSA_contentEditableDefaultSelection = false;</code></p>
+            </li>
+        </ul>
+        <p><b>Note:</b>&#160;The user can say a text selection voice command and immediately move the focus away from the content-editable div (before <span class="mc-variable DocLoc.DM_SK variable">Dragon Medical SpeechKit</span> has processed the command and selected the text). When the user moves the focus back to the div, the text will be selected;&#160;the text cursor won't be placed at the end of the div.</p>
+    </body>
+</html>

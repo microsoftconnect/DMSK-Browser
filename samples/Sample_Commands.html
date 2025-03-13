@@ -1,0 +1,169 @@
+﻿<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Dragon Medical SpeechKit Browser Edition Sample Commands</title>
+    <link rel="stylesheet" type="text/css" href="css/Demo.css" />
+
+    <!-- Nuance provides the Browser SDK on 3 fixed channels, reflecting the update cycles:
+        Beta, Mainline and Delayed
+        https://speechanywhere.nuancehdp.com/%CHANNEL%/scripts/Nuance.SpeechAnywhere.js
+    -->
+    <!--
+        Beta
+        This is a final verification channel focusing on release candidate builds
+        For integrators who want to verify upcoming version of Browser SDK with their integration
+        Builds are manually selected for release candidate and have high level of QA coverage
+    -->
+    <!--
+        Mainline
+        This channel is the released version
+        For Integrators who want to use the latest released version of SDK with their customers
+    -->
+    <!--
+        Delayed
+        This channel is the previous released version
+        For Integrators who want to / need to switch back after using Mainline channel
+    -->
+
+    <script language="javascript" type="text/javascript" src="https://speechanywhere.nuancehdp.com/Mainline/scripts/Nuance.SpeechAnywhere.js"></script>
+
+	<script language="javascript" type="text/javascript">
+
+	    function NUSA_configure() {
+            // configure NUSA
+	        NUSA_enableAll = false;
+	        NUSA_userId = "aUser";
+	        NUSA_applicationName = " Sample_Commands";
+	  
+            // create the first set of commands
+            createCommands();
+	    }
+
+	    ////////////////////////////////////////////////////////////////////////////        
+	    // define some formatting command ids
+	    var cmdIdFormattingRegular = "formatRegular";
+	    var cmdIdFormattingBold = "formatBold";
+	    var cmdIdFormattingItalic = "formatItalic";
+	    // define some coloring command ids
+	    var cmdIdColor = "color";
+	    var cmdIdColorBlack = "colorBlack";
+	    var cmdIdColorRed = "colorRed";
+	    var cmdIdColorGreen = "colorGreen";
+	    var cmdIdColorBlue = "colorBlue";
+        ////////////////////////////////////////////////////////////////////////////
+	    function InitColoringCommandsFromXternal(values, spokenForms) {
+	        // this comes eg from a database
+            // make sure that values[index] corresponds to spokenForms[index]
+	        values.push(cmdIdColorBlack); spokenForms.push("black");
+	        values.push(cmdIdColorRed); spokenForms.push("red");
+	        values.push(cmdIdColorGreen); spokenForms.push("green");
+	        values.push(cmdIdColorBlue); spokenForms.push("blue");
+	    }
+	    ////////////////////////////////////////////////////////////////////////////
+	    function createCommands() {
+	        // 1. create the command set with a name and a description
+	        var cmdSetFormatting = NUSA_createCommandSet("Formatting Commands", "a set of formatting commands");
+	        // 2. create some formatting commands for the command set
+	        NUSA_createCommand(cmdSetFormatting,        // the commandSet identifier
+                               cmdIdFormattingRegular,  // the id of this command
+                               "format regular",        // the spoken form - what do say to trigger this command
+                               "Format regular",        // the textual representation - how this command should show up on the What-Can-I-Say page
+                               "reset the format");     // a description of this command, also shown on the What-Can-I-Say page
+	        NUSA_createCommand(cmdSetFormatting, cmdIdFormattingBold, "format bold", "Format bold", "change the format to bold");
+	        // let's add an alternative for cmdIdFormattingBold, by simply reusing the command id:
+	        NUSA_createCommand(cmdSetFormatting, cmdIdFormattingBold, "set the format to bold", "Set the format to bold", "change the format to bold");
+	        NUSA_createCommand(cmdSetFormatting, cmdIdFormattingItalic, "format italic", "Format italic", "change the format to bold");
+	    }
+	    function updateGrammar() {
+	        // only update grammar once for demonstration
+	        document.getElementById("divUpdate").style.visibility = "hidden";
+
+	        // this time we are using command placeholders - this comes in handy if you have to deal with lists
+	        // 1. prepare the placeholder
+	        NUSA_createCommandPlaceholder("colorValue", "a color value");
+	        var values = [];
+	        var spokenForms = [];
+	        InitColoringCommandsFromXternal(values, spokenForms);
+	        NUSA_setCommandPlaceholderValues("colorValue", values, spokenForms);
+	        // 2. create the command set with a name and a description
+	        var cmdSetColoring = NUSA_createCommandSet("Coloring Commands", "a set of coloring commands");
+	        // 3. create the command for the command set
+	        NUSA_createCommand(cmdSetColoring,                      // the commandSet identifier
+                               cmdIdColor,                          // the id of this command
+                               "set color to  <colorValue>",        // the spoken form - what do say to trigger this command
+                               "Set color to <colorValue>",         // the textual representation - how this command should show up on the What-Can-I-Say page
+                               "Set the color to <colorValue>");    // a description of this command, also shown on the What-Can-I-Say page
+
+	        // notify NUSA about the change
+	        NUSA_reinitializeVuiForm();
+	    }
+	    function NUSA_onCommandRecognized(cmdId, spokenText, content, placeholderIds, placeholderValues) {
+	        // note that "content" is not used here - see documentation for details
+
+	        // handle the recognized command
+	        if (cmdId == cmdIdColor) { // this is a command using placeholders
+	            if (placeholderValues[0] == cmdIdColorBlack) { }
+	            else if (placeholderValues[0] == cmdIdColorRed) { } //etc
+	        }
+	        else if (cmdId == cmdIdFormattingRegular) { }
+	        else if (cmdId == cmdIdFormattingBold) { } // etc
+        
+            // show what was recognized
+	        var output = document.getElementById("output");
+	        output.value += "Id:" + cmdId + "\nSpoken text:" + spokenText + "\n";
+	        for (var i = 0; i < placeholderIds.length; ++i) {
+	            output.value += "Placeholder Id/Value: " + placeholderIds[i] + "/" + placeholderValues[i] + "\n";
+	        }
+	    }
+
+		/////////////////////////////////////////////////////////////
+		// Responding to Microphone's button events
+		/////////////////////////////////////////////////////////////
+		function NUSA_onControlDeviceEventReceived(clickedButtonId) {
+			switch(clickedButtonId) {
+
+				// Control device button 1 was pressed (SpeechMike: EOL; PowerMic: Transcribe). 
+				case NUSA_ControlDeviceEvent.Button1Pressed:
+					console.log('EOL was pressed');
+					break;
+
+				// Control device button 4 was pressed (SpeechMike: F1; PowerMic: Tab Backward).
+				case NUSA_ControlDeviceEvent.Button4Pressed:
+					console.log('Tab Backward');
+					break;
+
+				// Control device button 5 was pressed (SpeechMike: F2; PowerMic: Tab Forward).
+				case NUSA_ControlDeviceEvent.Button5Pressed:
+					console.log('Tab Forward');
+					break;
+
+				default:
+					console.log('A mic-button was clicked with the ID of  ' + clickedButtonId);
+					break;
+			}
+		}
+	</script>	   
+
+</head>
+
+<body>    
+    <div id="divMain" class="divMain">
+        <div>
+            <span>Check the What-Can-I-Say page for available commands.</span><br />
+            <div id="divUpdate"><span>To add commands on the fly, </span><input type="button" onclick="updateGrammar()" value="click here" /></div>
+        </div>
+
+         <table style="width: 100%;">
+                    <tr>
+                        <td><textarea id="output" rows="40" style="height:auto; width: 100%;" readonly="readonly"></textarea></td>
+                    </tr>
+        </table>        
+
+        <span class="classCopyright" id="slControlVersion">&nbsp;</span><br />
+        <span class="classCopyright" id="ServerVersion">&nbsp;</span><br />
+        <span class="classCopyright">"Copyright 2011-2024 Nuance Communications, Inc. All rights reserved." </span>     
+
+    </div>
+</body>
+</html>
