@@ -1,5 +1,5 @@
 # Dragon Medical SpeechKit Browser SDK
-Temporary location for Browser SpeechKit package and samples
+Temporary location for Browser SpeechKit package and samples.
 See the following pages for more information:
 
 [Setting up Dragon Medical SpeechKit](https://review.learn.microsoft.com/en-us/industry/healthcare/speechkit/browser/setup?branch=main)
