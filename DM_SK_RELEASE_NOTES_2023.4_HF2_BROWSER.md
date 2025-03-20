@@ -1,12 +1,3 @@
----
-title: Dragon Medical SpeechKit 2023.4 Hotfix 2 (Browser)
-description: Release notes for Dragon Medical SpeechKit 2023.4 Hotfix 2 (Browser edition 5.4 R1 HF2)
-ms.date: 02/12/2025
-ms.topic: concept-article
-author: antonrussell
-ms.author: antonrussell
----
-
 # Release Notes for Dragon Medical SpeechKit 2023\.4 Hotfix 2 (Browser edition 5\.4 R1 HF2\)
 
 ## Solved issues in version 2023\.4 Hotfix 2 (5\.4 R1 HF2\)
