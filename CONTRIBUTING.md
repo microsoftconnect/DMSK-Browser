@@ -1,0 +1,3 @@
+The content of this repository includes sample code for integrating Dragon Medical Speechkit Browser SDK into your web applications.  These samples are intended to help developers learn and use the SDK.  The code is public for anyone to view but is not meant to be modified and no pull requests will be accepted.
+
+Interested third party developers should visit https://learn.microsoft.com/en-us/industry/healthcare/speechkit/ for further information about working with Dragon Medical SpeechKit.
