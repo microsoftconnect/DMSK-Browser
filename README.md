@@ -10,8 +10,8 @@ See the following pages for more information:
 
 [End user documentation](https://learn.microsoft.com/en-us/industry/healthcare/speechkit/enduser/end-user-help)
 
-[Release notes for 2026.1](https://learn.microsoft.com/en-us/industry/healthcare/speechkit/release-notes/browser-2026.1)
+[Release notes for 2026.3](https://learn.microsoft.com/en-us/industry/healthcare/speechkit/release-notes/browser-2026.3)
 
-[Changes since the last version](https://learn.microsoft.com/en-us/industry/healthcare/speechkit/release-notes/browser-2026.1#solved-issues-in-version-20261-55-r1)
+[Changes since the last version](https://learn.microsoft.com/en-us/industry/healthcare/speechkit/release-notes/browser-2026.3#whats-new-in-version-20263-56-r1)
 
-Version 2026.1 (5.5.4.101)
+Version 2026.3 (5.6.10.1)
