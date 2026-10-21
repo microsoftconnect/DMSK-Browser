@@ -15,6 +15,6 @@ EXIT /B
 
 cd /d %~dp0
 :installing NuancePowerMicWebAdapterSetup...
-start NuancePowerMicWebAdapterSetup_123.1.25.0.exe /CentralDeployment
+start NuancePowerMicWebAdapterSetup_126.4.52.0.exe /CentralDeployment
 
 EXIT
